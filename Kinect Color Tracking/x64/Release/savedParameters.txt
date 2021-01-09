@@ -1,0 +1,9 @@
+0
+152
+114
+213
+0
+105
+
+The Thresholding parameters are written in this order:
+Hue (low-high), Saturation (low-high), Value (low-high)
