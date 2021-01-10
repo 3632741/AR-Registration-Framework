@@ -1,22 +1,15 @@
-# AR-Registration-Framework-PhD-Thesis
-Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
+# 3D Printable Mannequin Head (Zed Mini)
+These files can be 3D printed to build an humanoid head which uses the ZED mini stereo camera as eyes. The Zed mini baseline is 63mm which is coherent with the average human eyes baseline.
 
-The framework is composed by several modules:
-- Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity. (TO DO: SPOSTARE I FILE NECESSARI PER RICEVERE I DATI DEL KINECT DA OST/VST REGISTRATION A KINECT REGISTRATION)
+The mannequin is composed by 5 parts, and fits most commercially available FDM 3D printers (approximately 20x20x15cm volume required):
+- HeadBottom is the lower half of the head. Prints with the neck on the build plate on FDM printers, it will not fit into smaller SLA/mSLA printers. This is the longest print. If it doesn't fit inside the build plate, rotate on the diagonal (rotated 45° on the Z axis). Requires supports for the camera housing. The camera housing is open on the left side to be able to connect the ZED cable.
 
-- Kinect Registration: The Kinect is registered inside the HTC Vive reference system by using stereo camera calibration, with a Vive Tracker and a ZED mini stereo camera mounted on a perforated corner metal profile. The 3D printable files for this setup are given. A similar approach can be used with any camera as long as it can be fixed in a known position with respect to the Vive Tracker, which must be rigidly attached to the Kinect.
+- HeadTop is the skull. It has been separated from the bottom part for two reasons: to fit inside smaller printers build volume and to be able to swap the top of the skull with other shapes if needed (e.g. with a Vive Tracker stand). It is connected to the base with two JunctionPins. Prints without supports as there arer only two small bridging sections for the pins, and the pins are slightly shorter to compensate any sagging. If unsure on your printer bridging capabilities, print with supports inside the holes and they should easily be removable with pliers.
 
-- OST Registration: this module registers the OST HMD (Meta2) into the HTC Vive System. The manufacturer tracking is disabled and the HMD is tracked with a Vive Tracker. The tracker is registered to the HMD reference frame by means of a ZED mini stereo camera which is placed in a fixed position with respect to the tracker and the HMD (3D printable files for the mount are given). The user's eye positions are found by first using the Single Point Active Alignment Method (SPAAM) several times with a 3D printable mannequin (files are given) which has the ZED mini stereo camera as eyes, and obtaining a general profile. Each user then performs an alignment task with a checkerboard to eliminate the residual alignment error.
-(TODO: SPOSTARE GLI SCRIPT PER GLI ESPERIMENTI IN CARTELLA A PARTE)
+- JunctionPins (2 required). Are used to connect the top and bottom part of the mannequin.
 
-- VST Registration: This module is composed by the same checkerboard alignment task used in the last step of the OST registration. The VST device (HTC Vive) is already registered inside the HTC reference system, thus only the minor residual alignment error is compensated. The files to register the ZED mini in different positions (frontal or on top of the HMD) are also given. 
+- Camera cover. Encloses the ZED mini stereo camera inside the mannequin. small magnets can be glued to keep the camera in place.
 
-- Blind Reaching Control Group: This module contains the structure and 3D printable files of the setup used to perform a blind reaching task with the control group who does not wear any HMD. The structure is build using perforated corner metal profiles, 3D printed hooks and a metal rod with a sliding Led Box (see Led Box module).
 
-- Led Box: this module contains the Arduino project, schematic and 3D printable files to build an IR-Remote controlled box which lights up a led light for a specified amount of time. The box is used to perform the blind reaching task with the control group who does not wear any HMD. The box is designed in such a way that in complete darkness only a 2cm circle can be seen, easily repicable using the HMDs. Different lids are provided to attach the box to a metal rod in such a way that it can slide in different set positions.
-
-- OST Experimental Setup: In this module, the scripts used to perform two different experiments using the OST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
-
-- VST Experimental Setup: In this module, the scripts used to perform two different experiments using the VST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
-
+All the parts can be printed in PLA/ABS at 0.2mm layer height with a 0.4mm nozzle. If you want to weight down the mannequin, either use an high infill percentage or use a coarse gyroid infill and later fill with epoxy/sand the HeadTop/HeadBottom parts. 2-3 perimeter walls are advised.
 
