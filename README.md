@@ -12,8 +12,6 @@ The framework is composed by several modules:
 
 - Blind Reaching Control Group: This module contains the structure and 3D printable files of the setup used to perform a blind reaching task with the control group who does not wear any HMD. The structure is build using perforated corner metal profiles, 3D printed hooks and a metal rod with a sliding Led Box (see Led Box module). Scripts to save the positions of the displayed stimuli with a Vive Tracker are given.
 
-- Led Box: this module contains the Arduino project, schematic and 3D printable files to build an IR-Remote controlled box which lights up a led light for a specified amount of time. The box is used to perform the blind reaching task with the control group who does not wear any HMD. The box is designed in such a way that in complete darkness only a 2cm circle can be seen, easily repicable using the HMDs. Different lids are provided to attach the box to a metal rod in such a way that it can slide in different set positions.
-
 - OST Experimental Setup: In this module, the scripts used to perform two different experiments using the OST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
 
 - VST Experimental Setup: In this module, the scripts used to perform two different experiments using the VST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
