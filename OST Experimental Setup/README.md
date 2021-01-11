@@ -1,4 +1,4 @@
-# AR-Registration-Framework-PhD-Thesis
+# OST Experimental Setup
 Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
 
 The framework is composed by several modules:
