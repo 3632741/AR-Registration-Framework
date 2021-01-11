@@ -1,22 +1,7 @@
-# AR-Registration-Framework-PhD-Thesis
-Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
-
-The framework is composed by several modules:
-- Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity. (TO DO: SPOSTARE I FILE NECESSARI PER RICEVERE I DATI DEL KINECT DA OST/VST REGISTRATION A KINECT REGISTRATION)
-
-- Kinect Registration: The Kinect is registered inside the HTC Vive reference system by using stereo camera calibration, with a Vive Tracker and a ZED mini stereo camera mounted on a perforated corner metal profile. The 3D printable files for this setup are given. A similar approach can be used with any camera as long as it can be fixed in a known position with respect to the Vive Tracker, which must be rigidly attached to the Kinect.
-
-- OST Registration: this module registers the OST HMD (Meta2) into the HTC Vive System. The manufacturer tracking is disabled and the HMD is tracked with a Vive Tracker. The tracker is registered to the HMD reference frame by means of a ZED mini stereo camera which is placed in a fixed position with respect to the tracker and the HMD (3D printable files for the mount are given). The user's eye positions are found by first using the Single Point Active Alignment Method (SPAAM) several times with a 3D printable mannequin (files are given) which has the ZED mini stereo camera as eyes, and obtaining a general profile. Each user then performs an alignment task with a checkerboard to eliminate the residual alignment error.
-(TODO: SPOSTARE GLI SCRIPT PER GLI ESPERIMENTI IN CARTELLA A PARTE)
-
-- VST Registration: This module is composed by the same checkerboard alignment task used in the last step of the OST registration. The VST device (HTC Vive) is already registered inside the HTC reference system, thus only the minor residual alignment error is compensated. The files to register the ZED mini in different positions (frontal or on top of the HMD) are also given. 
-
-- Blind Reaching Control Group: This module contains the structure and 3D printable files of the setup used to perform a blind reaching task with the control group who does not wear any HMD. The structure is build using perforated corner metal profiles, 3D printed hooks and a metal rod with a sliding Led Box (see Led Box module).
-
-- Led Box: this module contains the Arduino project, schematic and 3D printable files to build an IR-Remote controlled box which lights up a led light for a specified amount of time. The box is used to perform the blind reaching task with the control group who does not wear any HMD. The box is designed in such a way that in complete darkness only a 2cm circle can be seen, easily repicable using the HMDs. Different lids are provided to attach the box to a metal rod in such a way that it can slide in different set positions.
-
-- OST Experimental Setup: In this module, the scripts used to perform two different experiments using the OST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
-
-- VST Experimental Setup: In this module, the scripts used to perform two different experiments using the VST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
-
+# VST Registration
+The VST is already registered in its own reference system; this folder contains a few tools to register the ZED mini with respect to the HMD.
+Specifically, this folder contains:
+- The IdentifyTrackerID script: automatically binds the correct device number to a SteamVR_Tracked_Object (ViveTracker) by specifying the unique tracker ID obtainable from the     SteamVR settings. Should be used whenever a Vive Tracker is needed in the project.
+- The tinyCalibration script: can be used to modify the left/right eye position by performing, one eye per time, an alignment task with a tracked checkerboard. Used to compensate small errors in the ZED camera mount positioning.
+- 3D Printable Files folder: contains two different mounts to attach the ZED mini camera either on top of the Vive/Vive pro or to the front (manufacturer mount). If the former mount is used, the ZED mini position must be obtained by attaching a Vive Tracker to its housing in the mount. The folder also contains a clip which can be used to attach a vive tracker to the corner of an IKEA VARIERA metal table, used to track the checkerboard used for the alignment task.
 
