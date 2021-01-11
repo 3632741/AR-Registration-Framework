@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using MathNet;
-//using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
@@ -45,11 +43,7 @@ public class SPAAM : MonoBehaviour
     [Header("Scale factor and rotation correction")]
     public float adjustmentShift = 0;
     public float adjustmentAngle = 0;
-    /*
-     public bool enableRigidTransformation;
-     public float xMultiplier, yMultiplier, zMultiplier;
-     public float xAngle, yAngle, zAngle;
-     */
+    
 
     [Header("Rendering resolution")]
     // Resolution of the headset
@@ -74,15 +68,6 @@ public class SPAAM : MonoBehaviour
     [Tooltip("Size of the sprite used as crosshair during the alignment task. The sprite is assumed to be square. e.g. 64 means a 64x64pixel wide sprite.")]
     // Size of the alignment cross sprite in pixel
     public int spriteSize;
-
-   // [Header("The canvas where the crosshair is rendered upon")]
-    // The parent canvas where the cross is instanced
-   // public GameObject canvas;
-   // [Header("Crosshair prefab")]
-  //  [Tooltip("Prefab of the rawImage GameObject with the alignment sprite applied")]
-    // Prefab of the rawImage GameObject with the cross sprite applied
-   // public GameObject cross;
-
 
     // Generated positions where the cross will be displayed
     private float spawn_x, spawn_y;
@@ -126,7 +111,6 @@ public class SPAAM : MonoBehaviour
     [Header("HMD camera")]
     [Tooltip("The GameObject which contains the calibrating camera")]
     public GameObject viveCamera;
-
 
     //list of indexes selected randomly during RANSAC
     List<int> ransac_indexes = new List<int>();
@@ -181,24 +165,9 @@ public class SPAAM : MonoBehaviour
     void Start()
     {
         originalNumberOfMatches = numberOfMatches;
-        // decommentare la prima condizione finito il debugging per permettere la calibrazione dell'occhio destro
-
-        /*  if (calibrateRightEye) //GameObject.Find("CalibrationParameters").GetComponent<savedParameters>().leftEyeCalibrated
-          {
-              calibrateRightEye = true;
-              GameObject.Find("LeftCamera").GetComponent<smooth>().enabled = false;
-              GameObject.Find("RightCamera").tag = "MainCamera";
-              GameObject.Find("LeftCamera").tag = "Untagged";
-              GameObject.Find("rightEye").tag = "TrackerEye";
-              GameObject.Find("leftEye").tag = "Untagged";
-
-
-          }
-          */
-        //  else
-        //  {
+        
         GameObject.Find("RightCamera").GetComponent<smooth>().enabled = false;
-     //   }
+     
         if (enableLogging)
         {
             while (File.Exists("Logs/Log" + logNumber + ".txt"))
@@ -272,8 +241,6 @@ public class SPAAM : MonoBehaviour
 
             if (Input.GetKeyDown("up") && !modifyTranslations)
             {
-                // GameObject.FindWithTag("MainCamera").transform.eulerAngles=new Vector3(0, 10, 0);
-                // GameObject.FindWithTag("MainCamera").transform.localRotation *= Quaternion.Euler(0, 10, 0);
                 GameObject.FindWithTag("MainCamera").transform.RotateAround(GameObject.FindWithTag("MainCamera").transform.position, GameObject.FindWithTag("HMD").transform.up, adjustmentAngle);
             }
             if (Input.GetKeyDown("down") && !modifyTranslations)
@@ -300,8 +267,6 @@ public class SPAAM : MonoBehaviour
                 GameObject.FindWithTag("MainCamera").transform.RotateAround(GameObject.FindWithTag("MainCamera").transform.position, GameObject.FindWithTag("HMD").transform.forward, -adjustmentAngle);
 
             }
-
-
 
             if (Input.GetKeyDown("p"))
             {
@@ -330,11 +295,7 @@ public class SPAAM : MonoBehaviour
     // Then, a new cross is generated.
     void spawnCross()
     {
-
-        //spawn_x = Random.Range(0, resolutionWidth-spriteSize+1);
-        //spawn_y = Random.Range(0, resolutionHeight - spriteSize+1);
         spawn_x = xSpawnPositionsUserDefined[matchesCounter];
-        //spawn_y = resolutionHeight-ySpawnPositionsUserDefined[matchesCounter];
         spawn_y = ySpawnPositionsUserDefined[matchesCounter];
         float metric_spawn_x = (float)(- ((float) spawn_x * 16f / (float) resolutionWidth));
         float metric_spawn_y = (float)(- ((float) (resolutionHeight - spawn_y) * 18f / (float) resolutionHeight));
@@ -358,20 +319,11 @@ public class SPAAM : MonoBehaviour
     void saveData()
     {
         // saving tracker position. 
-        // attenzione, errato: questo non prende le coordinate locali
-        //  tracker_x.Add(viveTracker.transform.localPosition.x);
-        //  tracker_y.Add(viveTracker.transform.localPosition.y);
-        //  tracker_z.Add(viveTracker.transform.localPosition.z);
         Vector3 cameraRelative = viveCamera.transform.InverseTransformPoint(viveTracker.transform.position);
         tracker_x.Add((float)Math.Round(cameraRelative.x,5));
         tracker_y.Add((float)Math.Round(cameraRelative.y,5));
         tracker_z.Add((float)Math.Round(cameraRelative.z,5));
-        //Debug.Log("x relative " + cameraRelative.x);
 
-        // saving the pixel coordinates of the cross
-        // (not normalized version)
-        //displayed_x.Add(spawn_x); 
-        //displayed_y.Add(spawn_y);
         displayed_x.Add((float)Math.Round(pixelNormalization(spawn_x,"x"),5));
         displayed_y.Add((float)Math.Round(pixelNormalization(spawn_y, "y"),5));
 
@@ -413,19 +365,8 @@ public class SPAAM : MonoBehaviour
             tracker_x.Add(myTrackerX[i]);
             tracker_y.Add(myTrackerY[i]);
             tracker_z.Add(myTrackerZ[i]);
-           
-        
-          //  myU[i] = 0.1f * tracker_x[i] / tracker_z[i] /pixelSizeX;
-          //  myV[i] = 0.1f * tracker_y[i] / tracker_z[i] /pixelSizeY;
-
-            //myU[i] =  tracker_x[i] / tracker_z[i] ;
-           // myV[i] =  tracker_y[i] / tracker_z[i] ;
-
-
             spawn_x = myU[i];
             spawn_y = myV[i];
-            //spawn_x = spawn_x - (resolutionWidth / 2);
-           // spawn_y = (resolutionHeight) / 2 - spawn_y;
             displayed_x.Add(spawn_x);
             displayed_y.Add(spawn_y);
 
@@ -445,21 +386,18 @@ public class SPAAM : MonoBehaviour
     
     void Calibrate()
     {
-        Debug.Log("calibrating");
-        
+        Debug.Log("calibrating");    
         RANSAC();
-       // inverseNormalization();
     }
 
     float pixelNormalization(float pixelCoordinates, string pixel)
     {
-        // missing code to normalize pixel data
         if (pixel == "x")
         {
-            // calcolo u tenendo presente della dimensione dello sprite
+            // compute u depending on sprite dimension
             if (!removeCrosshairShift)
             pixelCoordinates = pixelCoordinates + spriteSize/2;
-            // calcolo u' esprimendo le coordinate rispetto al principal point
+            // compute u' with the coordinates w.r.t. the principal point
             pixelCoordinates = pixelCoordinates - (resolutionWidth / 2);
             if (Normalization)
             {
@@ -476,11 +414,10 @@ public class SPAAM : MonoBehaviour
         }
         else if (pixel == "y")
         {
-            // calcolo v tenendo presente della dimensione dello sprite, traslando l'origine degli assi in alto a sinistra
-            //pixelCoordinates = resolutionHeight - pixelCoordinates - spriteSize/2;
+            // compute v depending on the sprite dimension, translating the axes origin in the upper left corner 
             if (!removeCrosshairShift)
                 pixelCoordinates = pixelCoordinates - spriteSize / 2;
-            // calcolo v' esprimendo le coordinate rispetto al principal point
+            // compute v' with the coordinates w.r.t. the principal point
             pixelCoordinates = (resolutionHeight) / 2 - pixelCoordinates;
 
             if (Normalization)
@@ -498,26 +435,15 @@ public class SPAAM : MonoBehaviour
         return pixelCoordinates;
     }
 
-    // revert the pixel normalization to obtain the correct G matrix
+    // not used, can be removed
     void inverseNormalization()
     {
-        // missing code to revert normalization
+        // not used
     }
 
     //builds the B matrix using readings taken by ransac_indexes
     void buildMatrix()
     {
-
-        /*
-         a = new double[4, 5] {
-            {1, 0, 0, 0, 2} ,   //  initializers for row indexed by 0 
-            {0, 0, 3, 0, 0} ,   //  initializers for row indexed by 1 
-            {0, 0, 0, 0, 0},   //  initializers for row indexed by 2 
-            {0, 2, 0, 0, 0},   //  initializers for row indexed by 3 
-        };
-        */
-
-
         if (enableLogging)
         {
             sr.WriteLine(string.Format("________________________________________________________________\n________________________________________________________________\n####################### Calibration Data #######################\n"));
@@ -609,9 +535,7 @@ public class SPAAM : MonoBehaviour
                ransac_tracker_y.Add(tracker_y[i]);
                ransac_tracker_z.Add(tracker_z[i]);
             }
-
-            //Debug.Log("array data: " + ransac_displayed_x[0] + " " + ransac_displayed_x[5] + " " + displayed_x[0] + " " + displayed_x[5]);
-            
+         
             bool temporarilyDisableLogging = enableLogging;
             enableLogging = false;
             updateRansacStoppingCondition(bestMatchInliers, n_matches);
@@ -634,9 +558,7 @@ public class SPAAM : MonoBehaviour
                     if (number != (len - 1)) numbers[number] = numbers[len - 1];
                     len--;
                 }
-               // listNumbers.Sort();
-              //  Debug.Log("Selected points: " + listNumbers[0] + " " + listNumbers[1] + " " + listNumbers[2] + " " + listNumbers[3] + " " + listNumbers[4] + " " + listNumbers[5] + " ");
-
+       
                 displayed_x.Clear();
                 displayed_y.Clear();
                 tracker_x.Clear();
@@ -656,9 +578,8 @@ public class SPAAM : MonoBehaviour
                 SVDdecomposition();
                 numberOfMatches = n_matches;
                 inliers = findInliers();
-              //  Debug.Log("found inliers: " + inliers + " current max inliers: " + bestMatchInliers);
+              
                 if (inliers > bestMatchInliers && lowestReprojectionError > meanReprojectionError)
-                   // if (lowestReprojectionError > reprojectionError)
                     {
                     //compute number of remaining iterations
                     bestMatchInliers = inliers;
@@ -669,9 +590,7 @@ public class SPAAM : MonoBehaviour
                     {
                         bestMatchIndexes.Add(listNumbers[k]);
 
-                    }
-                    // Debug.Log("Selected points: (ciclo) " + listNumbers[0] + " " + listNumbers[1] + " " + listNumbers[2] + " " + listNumbers[3] + " " + listNumbers[4] + " " + listNumbers[5] + " ");
-
+                    }                
                   
                 }
                 if (ransac_iteration == ransacMaxIterations - 1)
@@ -694,9 +613,7 @@ public class SPAAM : MonoBehaviour
             }
              Debug.Log("Selected points: " + bestMatchIndexes[0] + " " + bestMatchIndexes[1] + " " + bestMatchIndexes[2] + " " + bestMatchIndexes[3] + " " + bestMatchIndexes[4] + " " + bestMatchIndexes[5] + " ");
 
-            
-
-            
+                       
             // logging purposes only
             if (temporarilyDisableLogging)
             {
@@ -711,7 +628,6 @@ public class SPAAM : MonoBehaviour
                 numberOfMatches = ransacPointsPerBatch;
                 buildMatrix();
                 SVDdecomposition();
-                //numberOfMatches = n_matches;
             }
             Debug.Log("Inliers found:  " + bestMatchInliers + "; Mean Reprojection Error: " + meanReprojectionError);
 
@@ -730,8 +646,6 @@ public class SPAAM : MonoBehaviour
     void updateRansacStoppingCondition(int m, int n)
     {
         ransacMaxIterations =(int) Math.Round(Math.Log10(maxError) / Math.Log10(1 - Math.Pow(((double) m/n), ransacPointsPerBatch)));
-        //Debug.Log("RANSAC Number of iterations reduced to: " + ransacMaxIterations);
-
     }
 
     int findInliers()
@@ -750,23 +664,16 @@ public class SPAAM : MonoBehaviour
             vi = G[4] * ransac_tracker_x[i] + G[5] * ransac_tracker_y[i] + G[6] * ransac_tracker_z[i] + G[7];
             wi = G[8] * ransac_tracker_x[i] + G[9] * ransac_tracker_y[i] + G[10] * ransac_tracker_z[i] + G[11];
             // cross coordinates obtained by reprojecting the points using the computed G matrix
-
             xi = ui / wi;
             yi = vi / wi;
             resx = (xi - ransac_displayed_x[i]) * (xi - ransac_displayed_x[i]);
             resx = (yi - ransac_displayed_y[i]) * (yi - ransac_displayed_y[i]);
-            //  Debug.Log("reprojected x: " + xi + " reprojected y:" + yi + " real x:" + ransac_displayed_x[i] + " real y:" + ransac_displayed_y[i]);
-              
-
             reprojectionError = Math.Sqrt(resx + resy);
-
             meanReprojectionError += reprojectionError;
             if (reprojectionError < inlierDistanceThreshold)
             {  
                 InlierCount++;
             }
-          //  else
-          //      Debug.Log("point " + i + " not matched. Reprojection error " + reprojectionError);
         }
         meanReprojectionError = meanReprojectionError / numberOfMatches;
         return InlierCount;
@@ -826,26 +733,7 @@ public class SPAAM : MonoBehaviour
         int additionalmemory = 2;
         
         alglib.rmatrixsvd(a, m, n, uneeded, vtneeded, additionalmemory, out w, out u, out vt);
-
-        // per ottenere V facendo la trasposta di VT - computazionalmente inutile, basta prendere l'ultima riga anzichè l'ultima colonna
-        /*
-        for (int row = 0; row < vt.GetLength(0); row++)
-        {
-            for (int col = 0; col < vt.GetLength(1); col++)
-            {
-             //   Debug.Log("PRE row: " + row + " col: " + col + " vt[" + row + "," + col + "]=" + vt[row, col] + " vt[" + col + "," + row + "]=" + vt[col, row]);
-                double temp = vt[row, col];
-                vt[row, col] = vt[col, row];
-                vt[col, row] = temp;
-              //  Debug.Log("POST row: " + row + " col: " + col + " vt[" + row + "," + col + "]=" + vt[row, col] + " vt[" + col + "," + row + "]=" + vt[col, row]);
-
-            }
-
-        }
-        */
-
-
-        // l'ultima riga di Vt è la matrice G che serve a noi (bisognerebbe prendere l'ultima colonna di V, ma la funzione ritorna la matrice trasposta)
+        // the last row of Vt is the G matrix.
         G = new double[vt.GetLength(1)];
         string debug = "G MATRIX: ";
         for (int row = 0; row < vt.GetLength(1); row++)
@@ -873,70 +761,13 @@ public class SPAAM : MonoBehaviour
             debug2 = debug2 + "]";
             sr.WriteLine(debug2);
         }
-/*
-        debug2 = "U = [";
-        for (int row = 0; row < u.GetLength(0); row++)
-        {
-            for (int col = 0; col < u.GetLength(1); col++)
-            {
 
-                debug2 = debug2 + u[row, col].ToString() + " ";
-            }
-            debug2 = debug2 + ";\n";
-        }
-        debug2 = debug2 + "]";
-        sr.WriteLine(debug2);
-
-        debug2 = "W = [";
-        for (int row = 0; row < w.GetLength(0); row++)
-        {
-           debug2 = debug2 + w[row].ToString() + " ";
-        }
-        debug2 = debug2 + "]";
-        sr.WriteLine(debug2);
-*/
-
-        cameraMatrixDecomposition(G[0], G[1], G[2], G[3], G[4], G[5], G[6], G[7], G[8], G[9], G[10], G[11]);
-
-
-
-        /*
-         // debug snippet to print content of vt
-        debug = "";
-        for (int row = 0; row < vt.GetLength(0); row++)
-        {
-            for (int col = 0; col < vt.GetLength(1); col++)
-            {
-                debug = debug + vt[row, col] + " ";
-               // Debug.Log(vt[row, col] + " ");
-            }
-            debug = debug + "   newline    ";
-        }
-        Debug.Log(debug);
-        */
-
-
-        // debug snippet to print content of w
-        /*
-        debug = "";
-        for (int row = 0; row < w.GetLength(0); row++)
-        {
-          
-                debug = debug + w[row] + " ";
-               // Debug.Log(w[row, col] + " ");
-           
-        }
-        Debug.Log(debug);
-        */
-
+        cameraMatrixDecomposition(G[0], G[1], G[2], G[3], G[4], G[5], G[6], G[7], G[8], G[9], G[10], G[11]);  
     }
 
 
     void cameraMatrixDecomposition(double g1, double g2, double g3, double g4, double g5, double g6, double g7, double g8, double g9, double g10, double g11, double g12)
     {
-
-        
-
         G_resized = DenseMatrix.OfArray(new double[,]
         {
                 {  g1,  g2,  g3 },
@@ -953,10 +784,6 @@ public class SPAAM : MonoBehaviour
                 {  G_resized[2,0],   G_resized[2,1],  G_resized[2,2] }
         });
 
-        //Debug.Log("temp = " + temp[0, 0] + " " + temp[0, 1] + " " + temp[0, 2] + " " + temp[1, 0] + " " + temp[1, 1] + " " + temp[1, 2] + " " + temp[2, 0] + " " + temp[2, 1] + " " + temp[2, 2]);
-
-        // flipud(G_resized)'
-
         G_resized[0, 0] = temp[2, 0];
         G_resized[0, 1] = temp[1, 0];
         G_resized[0, 2] = temp[0, 0];
@@ -967,14 +794,11 @@ public class SPAAM : MonoBehaviour
         G_resized[2, 1] = temp[1, 2];
         G_resized[2, 2] = temp[0, 2];
 
-        //qr(flipud(M)')
         var qr = G_resized.QR();
 
          Q = qr.Q;
          R = qr.R;
 
-
-        //temp = Q;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -983,8 +807,7 @@ public class SPAAM : MonoBehaviour
             }
         }
 
-        // Q è la matrice ortogonale, ovvero la matrice di rotazione R
-        // Q = flipud(Q');
+        // Q is the orthogonal rotation matrix R (of the extrinsic parameters [R,t])
         Q[0, 0] = temp[0, 2];
         Q[0, 1] = temp[1, 2];
         Q[0, 2] = temp[2, 2];
@@ -994,8 +817,7 @@ public class SPAAM : MonoBehaviour
         Q[2, 0] = temp[0, 0];
         Q[2, 1] = temp[1, 0];
         Q[2, 2] = temp[2, 0];
-
-        //temp = R;
+        
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -1004,8 +826,7 @@ public class SPAAM : MonoBehaviour
             }
         }
 
-        // R è la matrice triangolare superiore, ovvero quella dei parametri intrinseci (K)
-        // R = fliplr(flipud(R'));
+        // R is the upper triangular matrix K (intrinsic parameters)
         R[0, 0] = temp[2, 2];
         R[0, 1] = temp[1, 2];
         R[0, 2] = temp[0, 2];
@@ -1016,8 +837,6 @@ public class SPAAM : MonoBehaviour
         R[2, 1] = temp[1, 0];
         R[2, 2] = temp[0, 0];
 
-
-        // J = diag(sign(diag(K_dec)));
         int sgn1, sgn2, sgn3;
         if (R[0, 0] > 0)
             sgn1 = 1;
@@ -1040,8 +859,6 @@ public class SPAAM : MonoBehaviour
                 {  0,   0,  sgn3 }
         });
 
-
-        //temp = R;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -1049,7 +866,7 @@ public class SPAAM : MonoBehaviour
                 temp[i, j] = R[i, j];
             }
         }
-        //K = K * J
+        
         R[0, 0] = temp[0, 0] * J[0, 0] + temp[0, 1] * J[1, 0] + temp[0, 2] * J[2, 0];
         R[0, 1] = temp[0, 0] * J[0, 1] + temp[0, 1] * J[1, 1] + temp[0, 2] * J[2, 1];
         R[0, 2] = temp[0, 0] * J[0, 2] + temp[0, 1] * J[1, 2] + temp[0, 2] * J[2, 2];
@@ -1062,8 +879,6 @@ public class SPAAM : MonoBehaviour
         R[2, 1] = temp[2, 0] * J[0, 1] + temp[2, 1] * J[1, 1] + temp[2, 2] * J[2, 1];
         R[2, 2] = temp[2, 0] * J[0, 2] + temp[2, 1] * J[1, 2] + temp[2, 2] * J[2, 2];
 
-
-        //temp = Q;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -1071,8 +886,6 @@ public class SPAAM : MonoBehaviour
                 temp[i, j] = Q[i, j];
             }
         }
-
-        //R = J * R
 
         Q[0, 0] = J[0, 0] * temp[0, 0] + J[0, 1] * temp[1, 0] + J[0, 2] * temp[2, 0];
         Q[0, 1] = J[0, 0] * temp[0, 1] + J[0, 1] * temp[1, 1] + J[0, 2] * temp[2, 1];
@@ -1166,45 +979,18 @@ public class SPAAM : MonoBehaviour
 
     void applyParameters()
     {
-        /*
-        //GameObject.FindWithTag("MainCamera").transform.rotation = Quaternion.Euler((float)x, (float)y, (float)z);
-        GameObject.FindWithTag("MainCamera").transform.localRotation = Quaternion.Euler((float)-(x * Mathf.Rad2Deg), (float)(y * Mathf.Rad2Deg), (float)(z * Mathf.Rad2Deg));
-        //GameObject.FindWithTag("MainCamera").transform.localRotation = Quaternion.Inverse(Quaternion.Euler((float)(x * Mathf.Rad2Deg), (float)(y * Mathf.Rad2Deg), (float)(z * Mathf.Rad2Deg)));
-        GameObject.FindWithTag("MainCamera").transform.localPosition = new Vector3((float)t1, (float)t2, (float)-Math.Abs(t3));
-        */
-    
-        //GameObject.FindWithTag("MainCamera").transform.rotation = Quaternion.Euler((float)x, (float)y, (float)z);
+
         GameObject.FindWithTag("TrackerEye").transform.localRotation = Quaternion.Euler((float)-(x * Mathf.Rad2Deg), (float)(y * Mathf.Rad2Deg), (float)(z * Mathf.Rad2Deg));
-        //GameObject.FindWithTag("MainCamera").transform.localRotation = Quaternion.Inverse(Quaternion.Euler((float)(x * Mathf.Rad2Deg), (float)(y * Mathf.Rad2Deg), (float)(z * Mathf.Rad2Deg)));
         GameObject.FindWithTag("TrackerEye").transform.localPosition = new Vector3((float)Math.Abs(t1), (float)-Math.Abs(t2), (float)- Math.Abs(t3));
-
-        // qui ci va la differenza tra i valori trovati e quelli già impostati 
-        //GameObject.FindWithTag("MainCamera").transform.localRotation = Quaternion.Inverse(GameObject.FindWithTag("MainCamera").transform.localRotation) * GameObject.FindWithTag("TrackerEye").transform.localRotation;
-        //GameObject.FindWithTag("MainCamera").transform.localPosition = transform.InverseTransformPoint(GameObject.FindWithTag("TrackerEye").transform.localPosition);
-        GameObject.FindWithTag("MainCamera").transform.localRotation =Quaternion.Euler( -GameObject.FindWithTag("TrackerEye").transform.localEulerAngles + GameObject.FindWithTag("TrackerMetaCameraTransform").transform.localEulerAngles );
+         GameObject.FindWithTag("MainCamera").transform.localRotation =Quaternion.Euler( -GameObject.FindWithTag("TrackerEye").transform.localEulerAngles + GameObject.FindWithTag("TrackerMetaCameraTransform").transform.localEulerAngles );
         GameObject.FindWithTag("MainCamera").transform.localPosition =  GameObject.FindWithTag("TrackerEye").transform.localPosition + GameObject.FindWithTag("TrackerMetaCameraTransform").transform.localPosition;
-        //GameObject.FindWithTag("MainCamera").transform.localPosition.z = GameObject.FindWithTag("MainCamera").transform.localPosition.z - GameObject.FindWithTag("TrackerEye").transform.localPosition.z
 
-
-
-        /*
-        if (enableRigidTransformation)
-        {
-            GameObject.FindWithTag("MainCamera").transform.rotation *= Quaternion.Euler(xAngle, yAngle, zAngle);
-            GameObject cam = GameObject.FindWithTag("MainCamera");
-            cam.transform.localPosition = new Vector3(cam.transform.position.x * xMultiplier, cam.transform.position.y * yMultiplier, cam.transform.position.z * zMultiplier);
-        }
-        */
 
         Debug.Log("pos x=" + Math.Abs(t1).ToString("0.00") + "; pos y=" + (-Math.Abs(t1)).ToString("0.00") + "; pos z=" + (-Math.Abs(t3)).ToString("0.00") + ";   rot x=" + (x * Mathf.Rad2Deg).ToString("0.00") + "; rot y=" + (y * Mathf.Rad2Deg).ToString("0.00") + "; z=" + (z * Mathf.Rad2Deg).ToString("0.00"));
-       // Debug.Log("pos x=" + GameObject.FindWithTag("MainCamera").transform.localPosition.x.ToString("0.00") + "; pos y=" + GameObject.FindWithTag("MainCamera").transform.localPosition.y.ToString("0.00") + "; pos z=" + GameObject.FindWithTag("MainCamera").transform.localPosition.z.ToString("0.00") + ";   rot x=" + GameObject.FindWithTag("MainCamera").transform.localRotation.eulerAngles.x + "; rot y=" + GameObject.FindWithTag("MainCamera").transform.localRotation.eulerAngles.y + "; z=" + GameObject.FindWithTag("MainCamera").transform.localRotation.eulerAngles.z);
-
-
-        // controllare che la distanza focale sia espressa in millimetri
-        double focalLength = 19.20401f; // (R[0, 0] + R[1, 1]) / 2;
+        double focalLength = 19.20401f; // modify as needed
         double SensorSizeX = focalLength * resolutionWidth / (R[0, 0]*1000);
         double SensorSizeY = focalLength * resolutionHeight / (R[1, 1]*1000);
-        double LensShiftX = -(R[0, 2]*1000 - resolutionWidth / 2) / resolutionWidth; //potrebbe essere a segno invertito
+        double LensShiftX = -(R[0, 2]*1000 - resolutionWidth / 2) / resolutionWidth; 
         double LensShiftY = (R[1, 2]*1000 - resolutionHeight / 2) / resolutionHeight;
 
         GameObject.FindWithTag("MainCamera").GetComponent<smooth>().enabled = false;
@@ -1254,17 +1040,12 @@ public class SPAAM : MonoBehaviour
             GameObject.Find("CalibrationParameters").GetComponent<savedParameters>().leftEyeRotation = GameObject.FindWithTag("MainCamera").transform.rotation;
             GameObject.Find("CalibrationParameters").GetComponent<savedParameters>().leftEyeCalibrated = true;
             // SceneManager.LoadScene(1);
-
             // RESET ALL VARIABLES TO BEGIN RIGHT EYE CALIBRATION
-
-            
             calibrateRightEye = true;
             GameObject.Find("LeftCamera").GetComponent<smooth>().enabled = false;
             GameObject.Find("RightCamera").GetComponent<smooth>().enabled = true;
             GameObject.Find("RightCamera").tag = "MainCamera";
             GameObject.Find("LeftCamera").tag = "Untagged";
-            //GameObject.Find("rightEye").tag = "TrackerEye";
-            //GameObject.Find("leftEye").tag = "Untagged";
 
             numberOfMatches = originalNumberOfMatches;
             logNumber = 0;
