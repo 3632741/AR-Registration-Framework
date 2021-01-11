@@ -1,22 +1,19 @@
-# AR-Registration-Framework-PhD-Thesis
-Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
+# Kinect Registration
+This module is used to track a 3D point with a simple color tracking algorithm and send its position to unity in real-time. It is composed by two parts: a C++ program, which uses the kinect V2 SDK and openCV to perform the image segmentation and isolate the 3D point, which is then sent to unity, which reads the data through a C# script. 
 
-The framework is composed by several modules:
-- Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity. (TO DO: SPOSTARE I FILE NECESSARI PER RICEVERE I DATI DEL KINECT DA OST/VST REGISTRATION A KINECT REGISTRATION)
+The C++ program is provided in the folder "Kinect Color Tracking" on the root dir.
 
-- Kinect Registration: The Kinect is registered inside the HTC Vive reference system by using stereo camera calibration, with a Vive Tracker and a ZED mini stereo camera mounted on a perforated corner metal profile. The 3D printable files for this setup are given. A similar approach can be used with any camera as long as it can be fixed in a known position with respect to the Vive Tracker, which must be rigidly attached to the Kinect.
+This folder contains the script to use in unity to receive the data (syncKinect.cs). Simply attach the script to an empty gameObject. The position of the gameObject will be updated with the 3D position of the tracked point, expressed with respect to the Kinect Reference Frame. To express the tracked point position with respect to the HTC Vive reference frame, the position of the Kinect in the HTC Vive reference frame must be known, and the tracked object must be set as child of a gameObject with the Kinect position (in the HTC Vive reference frame) as transform.  
 
-- OST Registration: this module registers the OST HMD (Meta2) into the HTC Vive System. The manufacturer tracking is disabled and the HMD is tracked with a Vive Tracker. The tracker is registered to the HMD reference frame by means of a ZED mini stereo camera which is placed in a fixed position with respect to the tracker and the HMD (3D printable files for the mount are given). The user's eye positions are found by first using the Single Point Active Alignment Method (SPAAM) several times with a 3D printable mannequin (files are given) which has the ZED mini stereo camera as eyes, and obtaining a general profile. Each user then performs an alignment task with a checkerboard to eliminate the residual alignment error.
-(TODO: SPOSTARE GLI SCRIPT PER GLI ESPERIMENTI IN CARTELLA A PARTE)
+To obtain such position it is sufficient to attach a Vive Tracker (or a controller) rigidly and in a known position with respect to the Kinect. To do this, we attached the Kinect to a perforated metal angular profile, and then attached a Vive Tracker on a 3D printer part which can house a ZED mini in a known position. We then obtained the transformation between the Zed Mini and the Kinect Camera through camera calibration, and since the transformation between the ZED mini and the Vive Tracker is known from the CAD of the 3D printed part, we can thus track the Kinect position (and therefore the 3D point tracked by the Kinect) in the HTC Vive Reference frame. 
 
-- VST Registration: This module is composed by the same checkerboard alignment task used in the last step of the OST registration. The VST device (HTC Vive) is already registered inside the HTC reference system, thus only the minor residual alignment error is compensated. The files to register the ZED mini in different positions (frontal or on top of the HMD) are also given. 
+For more details on the process refer to the related study.
 
-- Blind Reaching Control Group: This module contains the structure and 3D printable files of the setup used to perform a blind reaching task with the control group who does not wear any HMD. The structure is build using perforated corner metal profiles, 3D printed hooks and a metal rod with a sliding Led Box (see Led Box module).
-
-- Led Box: this module contains the Arduino project, schematic and 3D printable files to build an IR-Remote controlled box which lights up a led light for a specified amount of time. The box is used to perform the blind reaching task with the control group who does not wear any HMD. The box is designed in such a way that in complete darkness only a 2cm circle can be seen, easily repicable using the HMDs. Different lids are provided to attach the box to a metal rod in such a way that it can slide in different set positions.
-
-- OST Experimental Setup: In this module, the scripts used to perform two different experiments using the OST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
-
-- VST Experimental Setup: In this module, the scripts used to perform two different experiments using the VST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
+The 3D printable files to attach the Vive Tracker to the Kinect are given.
+Kinect Lock p1 and p2 are used to keep the kinect from rotating on the perforated corner profile.
+The Kinect must be screwed rigidly on top of the profile to keep the registration valid; a 1/4'' screw is needed. The CAD of a 3D printable 1/4'' screw is provided (cut at the desired length).
+An aproximate CAD of the used perforated corner profile is given, but any similar approach is valid as long as the Vive Tracker is rigidly attached to the Kinect in some way.
+The 3D printable alignment pin can be used to avoid screwing the Vive Tracker during experimentation, while retaining a reasonably accurate tracking of the Kinect device.
+All the parts, apart from the alignment pin, can be printed without supports.
 
 
