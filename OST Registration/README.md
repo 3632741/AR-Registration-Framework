@@ -30,5 +30,19 @@ SPAAM scene setup:
 3 - Target_Tracker_local : same as exp 2
 4 - CalibrationParameters : attached component SavedParameters, leave unitialized
 5 - Checkerboard_local : same as exp 2
+
+
+Final alignment performed by adding the tiny Calibration script to a gameobject.
+
+Tiny Calibration params:
+Adjustment Shift: 0,008 (suggested)
+Adjustment Angle: 10 (suggested)
+Focal Step: 5 (suggested)
+
+Toggles:
+skip calibration
+second experiment
+meta sdk experiment
+Checker Board: Checkerboard_local
     
 
