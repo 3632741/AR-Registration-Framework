@@ -1,22 +1,101 @@
 # OST Registration (tested in unity 2017.4.17f1)
-Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
 
-The framework is composed by several modules:
-- Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity. (TO DO: SPOSTARE I FILE NECESSARI PER RICEVERE I DATI DEL KINECT DA OST/VST REGISTRATION A KINECT REGISTRATION)
+SPAAM scene setup:
+1 - SceneManager with following attachments:
+    - network manager, network manager HUD same as exp scene.
+    - SPAAM: 
+        #RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error          0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked. 
+        #Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates. 
+        # Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)
+        # Rendering Resolution: add the resolution and projected pixel size of the HMD. For the Meta2, Resolution Width = 1280, Resolution Height = 1440, Pixel Size X = 4,84375e-05, Pixel Size Y = 5,9375e-05
+        # Crosshair positions during calibration: define the x and y screen positions where the crosshair will            be displayed.
+        # Alignment requested for SPAAM: number must be equal to the size of the specified crosshair position vector. suggested value = 15 to be used with RANSAC.
+        # Crosshair size: size of the sprite used to display the crosshair. our sprite was 64x64px wide.
+        # object tracked by vive tracker: target_tracker_local
+        # HMD camera: HMD_tracker_local
+        # original projection: leave empty, these field are display only.
+        # Camera - Image plane reference frame alignment: check accordingly depending on your planes orientation.
+        # Pixel Coordinates Transformations: metric conversion for the meta2.
+        # remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.
+        # use pixel dimensions during computations: leave unchecked unless needed.
+    - Enable Calibration: toggle after initialization. Left and right Camera needs to be paired with the left camera of the metacamera rig. Calibration Parameters must be paired with the CalibrationParameters gameobject.
+2 - Hmd_tracker_local. same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
+3 - Target_Tracker_local : same as exp 2
+4 - CalibrationParameters : attached component SavedParameters, leave unitialized
+5 - Checkerboard_local : same as exp 2
+    
 
-- Kinect Registration: The Kinect is registered inside the HTC Vive reference system by using stereo camera calibration, with a Vive Tracker and a ZED mini stereo camera mounted on a perforated corner metal profile. The 3D printable files for this setup are given. A similar approach can be used with any camera as long as it can be fixed in a known position with respect to the Vive Tracker, which must be rigidly attached to the Kinect.
 
-- OST Registration: this module registers the OST HMD (Meta2) into the HTC Vive System. The manufacturer tracking is disabled and the HMD is tracked with a Vive Tracker. The tracker is registered to the HMD reference frame by means of a ZED mini stereo camera which is placed in a fixed position with respect to the tracker and the HMD (3D printable files for the mount are given). The user's eye positions are found by first using the Single Point Active Alignment Method (SPAAM) several times with a 3D printable mannequin (files are given) which has the ZED mini stereo camera as eyes, and obtaining a general profile. Each user then performs an alignment task with a checkerboard to eliminate the residual alignment error.
-(TODO: SPOSTARE GLI SCRIPT PER GLI ESPERIMENTI IN CARTELLA A PARTE)
 
-- VST Registration: This module is composed by the same checkerboard alignment task used in the last step of the OST registration. The VST device (HTC Vive) is already registered inside the HTC reference system, thus only the minor residual alignment error is compensated. The files to register the ZED mini in different positions (frontal or on top of the HMD) are also given. 
+Experimental scene setup:
+- GameObject 'SceneManager' with 5 attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
+- GameObject 'Hmd_Tracker_local' with one attached component: Hmd_tracker_pose. Child: Tracker_MetaCameraRig_Transformation (obtained from several SPAAM calibration). approximate starting values: Position x=-0,02 y=0 z=-0,09; Rotation x=56,02 y=-3 z=-4,23. Invariant scale (1,1,1). Child: NeutralizeRotation with one attached component: Neutralize Rotation. Child: MetaCameraRig with following settings: Meta manager enabled, Playback Dir none, Context Bridge MetaCameraRig(MetaContextBridge); Slam Localizer enabled with Loading Map Wait Time 10, Show Calibration UI enabled, Rotation Only Tracking enabled; Meta Compositor Script enabled with Enable WebCam unchecked, Enable Depth Occlusion unchecked, Enable 2D Warp checked, Enable Asyncronous Rendering checked. Meta Context Bridge and Webcam Off Canvas Handler with Logo Canvas Prefab set to none.
+child: StereoCameras, Alignment User Settings disabled. child of MetaCameraRig: EnvironmentInitialization, with one component 'Environment Configuration', uncheck Slam Relocalization Active and Surface Reconstruction Active.
+child of tracker_metacamrearig_transform: three empty objects leftEye, rightEye, TrackerEye.
+- Target_Tracker_local with attached component Target_tracker_pose.
+- Checkerboard_local with attached component Checkerboard_tracker_pose, and as child the checkerboard prefab resized and translated in the same position w.r.t. the vive tracker. Also requires two children "RotationInterface" with tag RotationInterface and "TranslationInterface" with tag "TranslationInterface", with the prefabs of the gizmos used during the alignment phase. Only translation is required.
+the keybinds are the following ones:
+- Empty gameobject Volume.
 
-- Blind Reaching Control Group: This module contains the structure and 3D printable files of the setup used to perform a blind reaching task with the control group who does not wear any HMD. The structure is build using perforated corner metal profiles, 3D printed hooks and a metal rod with a sliding Led Box (see Led Box module).
 
-- Led Box: this module contains the Arduino project, schematic and 3D printable files to build an IR-Remote controlled box which lights up a led light for a specified amount of time. The box is used to perform the blind reaching task with the control group who does not wear any HMD. The box is designed in such a way that in complete darkness only a 2cm circle can be seen, easily repicable using the HMDs. Different lids are provided to attach the box to a metal rod in such a way that it can slide in different set positions.
+Network Manager params:
+don't destroy on load: checked
+run in background: checked
+log level: info
+offline scene: none
+online scene: none
+network address: localhost
+network port: 7777
+max delay: 0,01
+max buffered packets: 16
+packet fragmentation: checked
+MatchMaker Host URI: mm.unet.unity3d.com
+MatchMaker Port: 443
+Match Name: default
+Maximum Match Size: 4
+Spawn Info
+Player prefab: none
+Registered Spawnable Prefab: Synced_Data
 
-- OST Experimental Setup: In this module, the scripts used to perform two different experiments using the OST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
+Network Manager HUD params:
+Show Runtime GUI: checked
+GUI Horizontal Offset: 0
+GUI Vertical Offset: 0
 
-- VST Experimental Setup: In this module, the scripts used to perform two different experiments using the VST HMD registered with the previous modules are given. The first experiment is a blind reaching task. The second experiment is an active alignment task.
+Tiny Calibration params:
+Adjustment Shift: 0,008 (suggested)
+Adjustment Angle: 10 (suggested)
+Focal Step: 5 (suggested)
 
+Toggles:
+skip calibration
+second experiment
+meta sdk experiment
+Checker Board: Checkerboard_local
+
+
+Spawn Targets params:
+Experimental Settings:
+Numero Acquisizioni (number of displayed stimuli): 27 (in our study, but can be changed). 
+Log Data Filename: an increasing index will be added at the end, e.g. writing "test_" here will generate "test_0", "test_1" and so on
+Interaction Area Settings: 
+defines the number of nodes of the grid along the three axis: depth (z axis) width (x axis) and height (y axis).
+Spawn Distance: distance between nodes (cm).
+User Distance: distance from the user point of view to the center of the grid volume (cm).
+Volume: item Volume in the scene.
+Head: Hmd_Tracker_Local.
+Target: Sphere
+Target size: change to rescale your target prefab.
+
+Spawn Targets Exp 2 params:
+# Experimental Settings
+- Numero Acquisizioni (number of times the entire array is displayed): we used 5. change at your own choice.
+- Log Data Filename: an increasing index will be added at the end, e.g. writing "test_" here will generate "test_0", "test_1" and so on
+# Interaction area settings
+- Spawn Position: define the x, y, z coordinates where the items will be spawned. Measure the x, y, z coordinates by placing a vive tracker in the desired positions and saving the Vive Tracker Coordinates.
+- Spawn Sequence: can be used to define a custom sequence. If left undefined, the vector of positions will be shuffled and a target will spawn into a random position until every item of the grid has been displayed. The process is repeated for several times (defined by "Numero Acquisizioni" in the Experimental Settings).
+# Target Settings
+- Size: represents the number of different objects models available. Every time a new object is spawned, a random one will be picked from the added library of objects.
+- Element 0...N: represent the prefabs of the objects that will be instantiated.
+- Head: Hmd_Tracker_local
 
