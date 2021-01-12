@@ -13,3 +13,6 @@ The program works as follows.
 - The segmented image panel is a binarized image where the tracked portion of the image is white, while the background is black. The program performs a color filtering based on the HSV values entered in the configuration panel. The tracked object should thus be of an easily identifiable color which is not present in the rest of the scene (e.g. green or blue). A morphological opening filter removes small objects from the foreground, while a morphological closing filter fill small holes. The centroid (center of mass) of the white area is computed (tracked point). If the computed RGB point does not find a correspondence in the depth map (the depth sensor has a lower resolution than the RGB camera), the closest depth point will be used instead.
 - The system will then stream the x, y, z position of the tracked point (in Kinect coordinates) with an UDP socket. Global variables SERVER, BUFLEN, PORT can be changed as needed.
 - To receive the data inside Unity, refer to the Kinect Registration folder.
+
+![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Kinect%20Color%20Tracking/colorSegmentation.jpg)
+![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Kinect%20Color%20Tracking/colorSegmentation2.jpg)
