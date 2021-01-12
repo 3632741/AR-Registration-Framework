@@ -1,6 +1,8 @@
 # AR Registration Framework
 Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
 
+![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/FrameworkScheme.PNG)
+
 The framework is composed by several modules:
 - Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity.
 
