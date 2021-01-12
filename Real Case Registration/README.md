@@ -2,6 +2,8 @@
 
 This module can be used to provide a 3D visual stimulus to a person not wearing any HMD. The stimulus is designed to be easily replicable in AR, in such a way that a control group can be performed during perception/interaction experimental setups in AR environments. 
 
+Below, an example is displayed: the stimulus as observed without any HMD, displayed through a green led, using the structure (see experimentalSetup.stl) and the the same stimulus as observed through an AR OST HMD. In the darkness, the perceived stimuli are the same.
+
 ![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Real%20Case%20Registration/perceivedStimulus.PNG)
 
 This setup uses a led light connected to an Arduino Uno programmed to turn on for a chosen amount of time (1-9 seconds). The light can be controlled with an IR remote controller, which can be used to set the desired amount of time (presesing 1-9) or to trigger the start of the light stimulus (start/pause button). 
