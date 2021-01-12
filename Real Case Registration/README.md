@@ -14,3 +14,5 @@ To obtain similar stimuli, the experiment must be conducted in the darkness, as 
 
 The positions of the grid points, expressed in the HTC Vive reference system, can been obtained by positioning the led box in all the chosen positions and measuring its 3D world coordinates with a Vive Tracker attached on top of the center of the led light. The whole structure was designed to quickly remove the metal rod after the visual stimulus vanished, leaving an empty volume in front of the user. In this way, we deprived the users of the haptic feedback deriving from the finger's physical contact with the led box. 
 
+In this folder all the required 3D printable files and the arduino project are provided.
+
