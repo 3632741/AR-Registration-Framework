@@ -1,6 +1,35 @@
 # OST Experimental Setup
 
 Experimental scene setup:
+...bash 
+├───CheckerboardTracker
+│   ├───CheckerboardModel
+│   ├───RotationInterface
+│   └───TranslationInterface
+├───Directional Light
+├───Hand_Tracker
+├───HMD_Tracker
+│   ├───leftEye
+│   ├───rightEye
+│   ├───TrackerEye
+│   └───Tracker_Metacamerarig_Transformation
+│       └───NeutralizeRotation
+│           └───MetaCameraRig
+│               ├───EnvironmentInitialization
+│               ├───InteractionEngineSettings
+│               └───MetaCameras
+│                   ├───AudioListener
+│                   ├───StereoCameras
+│                   │   ├───EventCamera
+│                   │   ├───LeftCamera
+│                   │   └───RightCamera
+│                   └───VirtualWebcam
+│                       └───ContentCamera
+├───SceneManager
+└───Volume
+...
+
+
 - GameObject 'SceneManager' with 5 attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
 Network Manager params:
 don't destroy on load: checked
