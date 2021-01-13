@@ -1,7 +1,7 @@
 # OST Experimental Setup
 
 Experimental scene setup:
-...bash 
+```bash 
 ├───CheckerboardTracker
 │   ├───CheckerboardModel
 │   ├───RotationInterface
@@ -27,7 +27,7 @@ Experimental scene setup:
 │                       └───ContentCamera
 ├───SceneManager
 └───Volume
-...
+```
 
 
 - GameObject 'SceneManager' with 5 attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
