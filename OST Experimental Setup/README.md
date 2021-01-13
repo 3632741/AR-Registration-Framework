@@ -31,7 +31,6 @@ Experimental scene setup:
 
 
 - GameObject 'SceneManager' with 5 attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
-```bash 
     - Network Manager params:
 don't destroy on load: checked
 run in background: checked
@@ -51,24 +50,24 @@ Spawn Info
 Player prefab: none
 Registered Spawnable Prefab: Synced_Data
 
-Network Manager HUD params:
+    - Network Manager HUD params:
 Show Runtime GUI: checked
 GUI Horizontal Offset: 0
 GUI Vertical Offset: 0
 
-Tiny Calibration params:
+    - Tiny Calibration params:
 Adjustment Shift: 0,008 (suggested)
 Adjustment Angle: 10 (suggested)
 Focal Step: 5 (suggested)
 
-Toggles:
+    - Toggles:
 skip calibration
 second experiment
 meta sdk experiment
 Checker Board: Checkerboard_local
 
 
-Spawn Targets params:
+    - Spawn Targets params:
 Experimental Settings:
 Numero Acquisizioni (number of displayed stimuli): 27 (in our study, but can be changed). 
 Log Data Filename: an increasing index will be added at the end, e.g. writing "test_" here will generate "test_0", "test_1" and so on
@@ -81,7 +80,7 @@ Head: Hmd_Tracker_Local.
 Target: Sphere
 Target size: change to rescale your target prefab.
 
-Spawn Targets Exp 2 params:
+    - Spawn Targets Exp 2 params:
 Experimental Settings
 Numero Acquisizioni (number of times the entire array is displayed): we used 5. change at your own choice.
 Log Data Filename: an increasing index will be added at the end, e.g. writing "test_" here will generate "test_0", "test_1" and so on
@@ -92,7 +91,7 @@ Target Settings
 Size: represents the number of different objects models available. Every time a new object is spawned, a random one will be picked from the added library of objects.
 Element 0...N: represent the prefabs of the objects that will be instantiated.
 Head: Hmd_Tracker_local
-```
+
 
 - GameObject 'Hmd_Tracker_local' (tagged HMD) with one attached component: Hmd_tracker_pose. Child: Tracker_MetaCameraRig_Transformation (tagged TrackerMetaCameraTransform, obtained from several SPAAM calibration). approximate starting values: Position x=-0,02 y=0 z=-0,09; Rotation x=56,02 y=-3 z=-4,23. Invariant scale (1,1,1). Child: NeutralizeRotation with one attached component: Neutralize Rotation. Child: MetaCameraRig with following settings: Meta manager enabled, Playback Dir none, Context Bridge MetaCameraRig(MetaContextBridge); Slam Localizer enabled with Loading Map Wait Time 10, Show Calibration UI enabled, Rotation Only Tracking enabled; Meta Compositor Script enabled with Enable WebCam unchecked, Enable Depth Occlusion unchecked, Enable 2D Warp checked, Enable Asyncronous Rendering checked. Meta Context Bridge and Webcam Off Canvas Handler with Logo Canvas Prefab set to none.
 child: StereoCameras, Alignment User Settings disabled. child: Left_camera (tagged MainCamera) and Right_camera (tagged secondCamera). child of MetaCameraRig: EnvironmentInitialization, with one component 'Environment Configuration', uncheck Slam Relocalization Active and Surface Reconstruction Active.
