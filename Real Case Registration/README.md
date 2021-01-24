@@ -2,6 +2,8 @@
 
 This module can be used to provide a 3D visual stimulus to a person not wearing any HMD. The stimulus is designed to be easily replicable in AR, in such a way that a control group can be performed during perception/interaction experimental setups in AR environments. 
 
+![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Real%20Case%20Registration/RealCaseRegistration.PNG)
+
 Below, an example is displayed: the stimulus as observed without any HMD, displayed through a green led, using the structure (see experimentalSetup.stl) and the the same stimulus as observed through an AR OST HMD. In the darkness, the perceived stimuli are the same.
 
 ![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Real%20Case%20Registration/perceivedStimulus.PNG)
