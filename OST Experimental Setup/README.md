@@ -1,5 +1,13 @@
 # OST Experimental Setup
 
+This module includes the scripts and Unity scene setup required to perform two different perception/interaction AR experiments with the Meta2 OST HMD by Metavision.
+
+The first experiment is a blind reaching task, which aims to isolate the visual perceptual error in the reaching task by removing the visual alignment cue (blind paradigm). The experiment is performed in the darkness in order to be able to have a coherent control group, who do not use any HMD, to have a baseline with which to compare the performance of the users when wearing HMDs. 
+
+The second experiment is an alignment task, which aims at obtaining a comparison of the OST HMD with respect to the VST HMD in a functional and interactive task. The aim is to assess whether and how the distortions observed in the blind reaching experiment affect user interaction in more naturalistic settings, where multiple depth cues are available.
+
+The VST Experimental Setup is explained in detail in its own module, and the same applies for the Real Case control group (see Real Case Registration).
+
 Experimental scene setup:
 ```bash 
 ├───CheckerboardTracker
