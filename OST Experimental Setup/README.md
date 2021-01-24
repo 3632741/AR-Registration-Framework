@@ -94,7 +94,11 @@ Head: Hmd_Tracker_local
 
 
 - GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
-- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. approximate starting values: Position x=-0,02 y=0 z=-0,09; Rotation x=56,02 y=-3 z=-4,23. Invariant scale (1,1,1). 
+- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
+    - approximate starting values:  
+    Position: x=-0,02; y=0; z=-0,09  
+    Rotation: x=56,02; y=-3; z=-4,23  
+    Scale: x=1; y=1; z=1  
 
 - GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
 
