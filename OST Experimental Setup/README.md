@@ -144,7 +144,19 @@ Surface Reconstruction Active: uncheck
 - GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase.
 - GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase.
 the keybinds are the following ones:
-
+    - Y: Switch to Rotation mode.  
+    - U: Switch to Translation mode.  
+    - W: Translation mode: Moves the virtual checkerboard forward in the Z axis (away from the user). Rotation mode: increases the virtual checkerboard rotation over the X axis.  
+    - A: Translation mode: Moves the virtual checkerboard backward in the X axis (to the left of the user). Rotation mode: decreases the virtual checkerboard rotation over the Y axis.  
+    - S: Translation mode: Moves the virtual checkerboard backwards in the Z axis (towards the user). Rotation mode: decreases the virtual checkerboard rotation over the X axis.  
+    - D: Translation mode: Moves the virtual checkerboard forward in the X axis (to the right of the user). Rotation mode: increases the virtual checkerboard rotation over the Y axis.  
+    - R: Translation mode: Moves the virtual checkerboard forward in the Y axis (towards the ceiling).   
+    - F: Translation mode: Moves the virtual checkerboard backwards in the Y axis (towards the floor).   
+    - Q: Rotation mode: increases the virtual checkerboard rotation over the Z axis (clockwise with respect to the user optical axis).  
+    - E: Rotation mode: decreases the virtual checkerboard rotation over the Z axis (anticlockwise with respect to the user optical axis).  
+    - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
+    - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
+    - Space: Saves the current parameters and continues to the experiment.  
 - GameObject Volume: empty GameObject. (leave empty).
 
 
