@@ -95,7 +95,7 @@ Head: Hmd_Tracker_local
 
 - GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
 - GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
-    - approximate starting values:  
+    - Approximate starting values, if using the provided mount:  
     Position: x=-0,02; y=0; z=-0,09  
     Rotation: x=56,02; y=-3; z=-4,23  
     Scale: x=1; y=1; z=1  
@@ -103,7 +103,7 @@ Head: Hmd_Tracker_local
 - GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
 
 - GameObject 'MetaCameraRig' (default SDK prefab). 
-    - params:  
+    - Params:  
 Meta manager: enabled  
 Playback Dir: none  
 Context Bridge: MetaCameraRig(MetaContextBridge)  
@@ -121,9 +121,9 @@ Canvas Handler Logo Canvas Prefab: none
 - GameObject 'Left_camera': tagged with 'MainCamera'
 - GameObject 'Right_camera': tagged with 'secondCamera'. 
 - GameObject 'EnvironmentInitialization'. Attached component: 'Environment Configuration'.
-    - params:
-Slam Relocalization Active: uncheck
-Surface Reconstruction Active: uncheck
+    - Params:  
+Slam Relocalization Active: uncheck  
+Surface Reconstruction Active: uncheck  
 
 - GameObject 'leftEye': empty GameObject. (leave empty)
 - GameObject 'rightEye': empty GameObject. (leave empty)
