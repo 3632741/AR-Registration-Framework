@@ -99,19 +99,19 @@ Child: Tracker_MetaCameraRig_Transformation (tagged TrackerMetaCameraTransform, 
 - GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
 
 - GameObject 'MetaCameraRig' (default SDK prefab). 
-      - params: 
-    Meta manager: enabled 
-    Playback Dir: none
-    Context Bridge: MetaCameraRig(MetaContextBridge)
-    Slam Localizer: enabled, with Loading Map Wait Time 10 
-    Show Calibration UI: enabled
-    Rotation Only Tracking: enabled
-    Meta Compositor Script: enabled with Enable WebCam unchecked
-    Enable Depth Occlusion: unchecked
-    Enable 2D Warp: checked
-    Enable Asyncronous Rendering: checked
-    Meta Context Bridge and Webcam: Off 
-    Canvas Handler Logo Canvas Prefab: none
+    - params:  
+Meta manager: enabled 
+Playback Dir: none
+Context Bridge: MetaCameraRig(MetaContextBridge)
+Slam Localizer: enabled, with Loading Map Wait Time 10 
+Show Calibration UI: enabled
+Rotation Only Tracking: enabled
+Meta Compositor Script: enabled with Enable WebCam unchecked
+Enable Depth Occlusion: unchecked
+Enable 2D Warp: checked
+Enable Asyncronous Rendering: checked
+Meta Context Bridge and Webcam: Off 
+Canvas Handler Logo Canvas Prefab: none
 
 child: StereoCameras, Alignment User Settings disabled. child: Left_camera (tagged MainCamera) and Right_camera (tagged secondCamera). child of MetaCameraRig: EnvironmentInitialization, with one component 'Environment Configuration', uncheck Slam Relocalization Active and Surface Reconstruction Active.
 child of tracker_metacamrearig_transform: three empty objects leftEye, rightEye, TrackerEye.
