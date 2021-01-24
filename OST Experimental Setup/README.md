@@ -113,8 +113,17 @@ Enable Asyncronous Rendering: checked
 Meta Context Bridge and Webcam: Off 
 Canvas Handler Logo Canvas Prefab: none
 
-child: StereoCameras, Alignment User Settings disabled. child: Left_camera (tagged MainCamera) and Right_camera (tagged secondCamera). child of MetaCameraRig: EnvironmentInitialization, with one component 'Environment Configuration', uncheck Slam Relocalization Active and Surface Reconstruction Active.
-child of tracker_metacamrearig_transform: three empty objects leftEye, rightEye, TrackerEye.
+- GameObject 'StereoCameras': Alignment User Settings disabled. 
+- GameObject 'Left_camera': tagged with 'MainCamera'
+- GameObject 'Right_camera': tagged with 'secondCamera'. 
+- GameObject 'EnvironmentInitialization'. Attached component: 'Environment Configuration'.
+    - params:
+Slam Relocalization Active: uncheck
+Surface Reconstruction Active: uncheck
+
+- GameObject 'leftEye': empty GameObject. (leave empty)
+- GameObject 'rightEye': empty GameObject. (leave empty)
+- GameObject 'TrackerEye': empty GameObject. (leave empty)
 
 - GameObject Target_Tracker_local. Attached component: Target_tracker_pose.
 
