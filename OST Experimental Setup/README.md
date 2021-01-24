@@ -94,7 +94,7 @@ Head: Hmd_Tracker_local
 
 
 - GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
-Child: Tracker_MetaCameraRig_Transformation (tagged TrackerMetaCameraTransform, obtained from several SPAAM calibration). approximate starting values: Position x=-0,02 y=0 z=-0,09; Rotation x=56,02 y=-3 z=-4,23. Invariant scale (1,1,1). 
+- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. approximate starting values: Position x=-0,02 y=0 z=-0,09; Rotation x=56,02 y=-3 z=-4,23. Invariant scale (1,1,1). 
 
 - GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
 
@@ -125,12 +125,15 @@ Surface Reconstruction Active: uncheck
 - GameObject 'rightEye': empty GameObject. (leave empty)
 - GameObject 'TrackerEye': empty GameObject. (leave empty)
 
-- GameObject Target_Tracker_local. Attached component: Target_tracker_pose.
+- GameObject 'Target_Tracker_local'. Attached component: Target_tracker_pose.
 
-- GameObject Checkerboard_local with attached component Checkerboard_tracker_pose, and as child the checkerboard prefab resized and translated in the same position w.r.t. the vive tracker. Also requires two children "RotationInterface" with tag RotationInterface and "TranslationInterface" with tag "TranslationInterface", with the prefabs of the gizmos used during the alignment phase. Only translation is required.
+- GameObject 'CheckerboardTracker'. Attached component: Checkerboard_tracker_pose. 
+- GameObject 'CheckerboardModel'. This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
+- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase.
+- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase.
 the keybinds are the following ones:
 
-- Empty gameobject Volume.
+- GameObject Volume: empty GameObject. (leave empty).
 
 
 
