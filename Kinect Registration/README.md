@@ -9,6 +9,8 @@ To obtain such position it is sufficient to attach a Vive Tracker (or a controll
 
 For more details on the process refer to the related study.
 
+![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Kinect%20Registration/kinectSchema.PNG)
+
 The 3D printable files to attach the Vive Tracker to the Kinect are given.
 Kinect Lock p1 and p2 are used to keep the kinect from rotating on the perforated corner profile.
 The Kinect must be screwed rigidly on top of the profile to keep the registration valid; a 1/4'' screw is needed. The CAD of a 3D printable 1/4'' screw is provided (cut at the desired length).
