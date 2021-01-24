@@ -100,18 +100,18 @@ Head: Hmd_Tracker_local
 
 - GameObject 'MetaCameraRig' (default SDK prefab). 
     - params:  
-Meta manager: enabled 
-Playback Dir: none
-Context Bridge: MetaCameraRig(MetaContextBridge)
-Slam Localizer: enabled, with Loading Map Wait Time 10 
-Show Calibration UI: enabled
-Rotation Only Tracking: enabled
-Meta Compositor Script: enabled with Enable WebCam unchecked
-Enable Depth Occlusion: unchecked
-Enable 2D Warp: checked
-Enable Asyncronous Rendering: checked
-Meta Context Bridge and Webcam: Off 
-Canvas Handler Logo Canvas Prefab: none
+Meta manager: enabled  
+Playback Dir: none  
+Context Bridge: MetaCameraRig(MetaContextBridge)  
+Slam Localizer: enabled, with Loading Map Wait Time 10   
+Show Calibration UI: enabled  
+Rotation Only Tracking: enabled  
+Meta Compositor Script: enabled with Enable WebCam unchecked  
+Enable Depth Occlusion: unchecked  
+Enable 2D Warp: checked  
+Enable Asyncronous Rendering: checked  
+Meta Context Bridge and Webcam: Off   
+Canvas Handler Logo Canvas Prefab: none  
 
 - GameObject 'StereoCameras': Alignment User Settings disabled. 
 - GameObject 'Left_camera': tagged with 'MainCamera'
