@@ -57,5 +57,7 @@ The keybinds of the Rotation-Editing mode are the following ones:
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.  
-- Volume
-- kinectTracker (tag: kinectTracker). attached component identify tracker id and steam vr tracked object, origin none. child: kinect with the applied transormation found with camera calibration. child: kinectTrackedObject (tagged: kinect)
+- GameObject 'Volume': empty GameObject. (leave empty).
+- GameObject 'KinectTracker'. Tagged with 'kinectTracker'. Attached components: 'IdentifyTrackerID and 'steamVR_Tracked_Object', origin: none. 
+- GameObject 'Kinect'. The transform of this GameObject is obtained by the procedure described in the module "Kinect Registration" (T s->k).
+- GameObject 'kinectTrackedObject'. Tagged with 'kinect'. The transform of this GameObject is updated with the 3D position of the user's finger in the Kinect reference frame.
