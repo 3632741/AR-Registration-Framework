@@ -8,7 +8,7 @@ The second experiment is an alignment task, which aims at obtaining a comparison
 
 The OST Experimental Setup is explained in detail in its own module, and the same applies for the Real Case control group (see Real Case Registration).
 
-# Scene Structure:
+# Scene Structure
 ```bash
 ├───CheckerboardTracker
 │   ├───CheckerboardModel
