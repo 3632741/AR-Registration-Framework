@@ -141,22 +141,31 @@ Surface Reconstruction Active: uncheck
 
 - GameObject 'CheckerboardTracker'. Attached component: Checkerboard_tracker_pose. 
 - GameObject 'CheckerboardModel'. This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
-- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase.
-- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase.
-the keybinds are the following ones:
+- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+The keybinds of the Translation-Editing mode are the following ones:
     - Y: Switch to Rotation mode.  
+    - W: Moves the virtual checkerboard forward in the Z axis (away from the user).   
+    - A: Moves the virtual checkerboard backward in the X axis (to the left of the user).
+    - S: Moves the virtual checkerboard backwards in the Z axis (towards the user). R
+    - D: Moves the virtual checkerboard forward in the X axis (to the right of the user). 
+    - R: Moves the virtual checkerboard forward in the Y axis (towards the ceiling).   
+    - F: Moves the virtual checkerboard backwards in the Y axis (towards the floor).   
+    - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
+    - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
+    - Space: Saves the current parameters and continues to the experiment.
+- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+The keybinds of the Rotation-Editing mode are the following ones:
     - U: Switch to Translation mode.  
-    - W: Translation mode: Moves the virtual checkerboard forward in the Z axis (away from the user). Rotation mode: increases the virtual checkerboard rotation over the X axis.  
-    - A: Translation mode: Moves the virtual checkerboard backward in the X axis (to the left of the user). Rotation mode: decreases the virtual checkerboard rotation over the Y axis.  
-    - S: Translation mode: Moves the virtual checkerboard backwards in the Z axis (towards the user). Rotation mode: decreases the virtual checkerboard rotation over the X axis.  
-    - D: Translation mode: Moves the virtual checkerboard forward in the X axis (to the right of the user). Rotation mode: increases the virtual checkerboard rotation over the Y axis.  
-    - R: Translation mode: Moves the virtual checkerboard forward in the Y axis (towards the ceiling).   
-    - F: Translation mode: Moves the virtual checkerboard backwards in the Y axis (towards the floor).   
-    - Q: Rotation mode: increases the virtual checkerboard rotation over the Z axis (clockwise with respect to the user optical axis).  
-    - E: Rotation mode: decreases the virtual checkerboard rotation over the Z axis (anticlockwise with respect to the user optical axis).  
+    - W: Increases the virtual checkerboard rotation over the X axis.  
+    - A: Decreases the virtual checkerboard rotation over the Y axis.  
+    - S: Decreases the virtual checkerboard rotation over the X axis.  
+    - D: Increases the virtual checkerboard rotation over the Y axis.  
+    - Q: Increases the virtual checkerboard rotation over the Z axis (clockwise with respect to the user optical axis).  
+    - E: Decreases the virtual checkerboard rotation over the Z axis (anticlockwise with respect to the user optical axis).  
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.  
+  
 - GameObject Volume: empty GameObject. (leave empty).
 
 
