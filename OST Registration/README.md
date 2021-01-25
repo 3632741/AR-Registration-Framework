@@ -1,12 +1,11 @@
 # OST Registration (tested in unity 2017.4.17f1)
-###### SERVER ############
-scene setup:
+ # Server Scene Setup
 - VR head tracking, vr play area disabled. child: HMD tracker, with components: Steam VR_Tracked Object (origin none) and identify Tracker ID (write the ID of the vive tracker found under manage your vive trackers of steamVR).
 - SPAAM_target: same as HMD tracker
 - Checkerboard: same as HMD tracker
 - KinectSocketReceiver with added components: SyncKinect and Socket Receiver. Add the port used for the Kinect data transmission (default on port 8888).
 - scene controller with the same network manager and network manager hud as below. NB synced data must be the same in both projects.
-###### CLIENT ############
+# Client Scene Setup
 SPAAM scene setup:
 1 - SceneManager with following attachments:
     - network manager, network manager HUD same as exp scene.
