@@ -9,7 +9,9 @@
 └───VR Head Tracking
     └───HMD_Tracker
 ```
-- GameObject 'VR head tracking'. vr play area disabled. 
+- GameObject 'VR head tracking'.  
+  - settings: 
+  - VR play area disabled.   
 - GameObject 'HMD_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID (write the ID of the vive tracker found under manage your vive trackers of steamVR).
 - GameObject 'SPAAM_Target_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID (write the ID of the vive tracker found under manage your vive trackers of steamVR).
 - GameObject 'Checkerboard_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID (write the ID of the vive tracker found under manage your vive trackers of steamVR).
