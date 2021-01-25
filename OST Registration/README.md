@@ -53,8 +53,8 @@
 ├───SceneController
 └───Target_Tracker
 ```
-SPAAM scene setup:
-- GameObject 'SceneManager'. Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM', 'Enable Calibration'.
+
+- **GameObject 'SceneManager'.** Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM' **OR** 'tiny Calibration', 'Enable Calibration'.
   Parameters:  
   - Network Manager params:  
 don't destroy on load: checked  
@@ -97,24 +97,48 @@ GUI Vertical Offset: 0
   - Enable Calibration params:  
     toggle after initialization.   
     Left and right Camera needs to be paired with the left camera of the metacamera rig.  
-    Calibration Parameters must be paired with the CalibrationParameters gameobject.  
-- GameObject 'Hmd_tracker_local'. same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
-- GameObject 'Target_Tracker_local'. same as exp 2
-- GameObject 'CalibrationParameters'. attached component SavedParameters, leave unitialized
-- GameObject 'Checkerboard_local'. same as exp 2
+    Calibration Parameters must be paired with the CalibrationParameters gameobject. 
+  - Tiny Calibration params:
+Adjustment Shift: 0,008 (suggested)
+Adjustment Angle: 10 (suggested)
+Focal Step: 5 (suggested)
+skip calibration: toggle to skip calibration.
+second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.
+meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).
+Checker Board: Checkerboard_local
+- **GameObject 'Hmd_tracker_local'.** same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
+- **GameObject 'Target_Tracker_local'.**  Attached component: Target_tracker_pose.
+- **GameObject 'CalibrationParameters'.** attached component SavedParameters, leave unitialized
+- **GameObject 'CheckerboardTracker'.** Attached component: Checkerboard_tracker_pose. 
+- **GameObject 'CheckerboardModel'.** This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
+- **GameObject 'TranslationInterface'.** Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+The keybinds of the Translation-Editing mode are the following ones:
+    - Y: Switch to Rotation mode.  
+    - W: Moves the virtual checkerboard forward in the Z axis (away from the user).   
+    - A: Moves the virtual checkerboard backward in the X axis (to the left of the user).
+    - S: Moves the virtual checkerboard backwards in the Z axis (towards the user). R
+    - D: Moves the virtual checkerboard forward in the X axis (to the right of the user). 
+    - R: Moves the virtual checkerboard forward in the Y axis (towards the ceiling).   
+    - F: Moves the virtual checkerboard backwards in the Y axis (towards the floor).   
+    - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
+    - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
+    - Space: Saves the current parameters and continues to the experiment.
+- **GameObject 'RotationInterface'.** Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+The keybinds of the Rotation-Editing mode are the following ones:
+    - U: Switch to Translation mode.  
+    - W: Increases the virtual checkerboard rotation over the X axis.  
+    - A: Decreases the virtual checkerboard rotation over the Y axis.  
+    - S: Decreases the virtual checkerboard rotation over the X axis.  
+    - D: Increases the virtual checkerboard rotation over the Y axis.  
+    - Q: Increases the virtual checkerboard rotation over the Z axis (clockwise with respect to the user optical axis).  
+    - E: Decreases the virtual checkerboard rotation over the Z axis (anticlockwise with respect to the user optical axis).  
+    - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
+    - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
+    - Space: Saves the current parameters and continues to the experiment.  
 
 
 Final alignment performed by adding the tiny Calibration script to a gameobject.
 
-Tiny Calibration params:
-Adjustment Shift: 0,008 (suggested)
-Adjustment Angle: 10 (suggested)
-Focal Step: 5 (suggested)
 
-Toggles:
-skip calibration
-second experiment
-meta sdk experiment
-Checker Board: Checkerboard_local
     
 
