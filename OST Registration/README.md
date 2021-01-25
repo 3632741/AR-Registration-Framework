@@ -75,11 +75,11 @@ Spawn Info
 Player prefab: none  
 Registered Spawnable Prefab: Synced_Data  
 
-     - Network Manager HUD params:  
+  - Network Manager HUD params:  
 Show Runtime GUI: checked  
 GUI Horizontal Offset: 0  
 GUI Vertical Offset: 0  
-      - SPAAM params: 
+  - SPAAM params: 
         RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error 0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked.  
         Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates.  
          Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)  
@@ -94,7 +94,7 @@ GUI Vertical Offset: 0
          Pixel Coordinates Transformations: metric conversion for the meta2.  
          remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.  
          use pixel dimensions during computations: leave unchecked unless needed.  
-    - Enable Calibration params:  
+  - Enable Calibration params:  
     toggle after initialization.   
     Left and right Camera needs to be paired with the left camera of the metacamera rig.  
     Calibration Parameters must be paired with the CalibrationParameters gameobject.  
