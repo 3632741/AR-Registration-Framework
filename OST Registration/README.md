@@ -134,8 +134,8 @@ Enable Asyncronous Rendering: checked
 Meta Context Bridge and Webcam: Off   
 Canvas Handler Logo Canvas Prefab: none  
 
-- GameObject 'StereoCameras': Alignment User Settings disabled. 
-- GameObject 'Left_camera': tagged with 'MainCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
+- **GameObject 'StereoCameras'**: Alignment User Settings disabled. 
+- **GameObject 'Left_camera':** tagged with 'MainCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
   Params:  
   - X: -7.5  
   - Y: -8.5  
@@ -146,7 +146,7 @@ Canvas Handler Logo Canvas Prefab: none
   - Material: cross_shader  
   - x pixel : -675  
   - y pixel : -604  
-- GameObject 'Right_camera': tagged with 'secondCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**
+- GameObject 'Right_camera': tagged with 'secondCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
   Params:  
   - X: -7.5  
   - Y: -8.5  
@@ -162,9 +162,9 @@ Canvas Handler Logo Canvas Prefab: none
 Slam Relocalization Active: uncheck  
 Surface Reconstruction Active: uncheck  
 
-- GameObject 'leftEye': empty GameObject. (leave empty)
-- GameObject 'rightEye': empty GameObject. (leave empty)
-- GameObject 'TrackerEye': empty GameObject. (leave empty)
+- **GameObject 'leftEye':** empty GameObject. (leave empty)
+- **GameObject 'rightEye':** empty GameObject. (leave empty)
+- **GameObject 'TrackerEye':** empty GameObject. (leave empty)
 - **GameObject 'Target_Tracker_local'.**  Attached component: Target_tracker_pose.
 - **GameObject 'CalibrationParameters'.** attached component SavedParameters, leave unitialized
 - **GameObject 'CheckerboardTracker'.** Attached component: Checkerboard_tracker_pose. 
