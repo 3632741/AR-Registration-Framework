@@ -110,16 +110,16 @@ Skip calibration: toggle to skip calibration.
 Second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.  
 Meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).  
 Checker Board: Add the 'Checkerboard_tracker' GameObject from the scene hierarchy.  
-- GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
-- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
+- **GameObject 'Hmd_Tracker_local'.** Tagged with 'HMD'. Attached component: Hmd_tracker_pose. 
+- **GameObject 'Tracker_MetaCameraRig_Transformation'.** Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
     - Approximate starting values, if using the provided mount:  
     Position: x=-0,02; y=0; z=-0,09  
     Rotation: x=56,02; y=-3; z=-4,23  
     Scale: x=1; y=1; z=1  
 
-- GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
+- **GameObject 'NeutralizeRotation'.** Attached component: Neutralize Rotation. 
 
-- GameObject 'MetaCameraRig' (default SDK prefab). 
+- **GameObject 'MetaCameraRig'** (default SDK prefab). 
     - Params:  
 Meta manager: enabled  
 Playback Dir: none  
@@ -146,7 +146,7 @@ Canvas Handler Logo Canvas Prefab: none
   - Material: cross_shader  
   - x pixel : -675  
   - y pixel : -604  
-- GameObject 'Right_camera': tagged with 'secondCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
+- **GameObject 'Right_camera':** tagged with 'secondCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
   Params:  
   - X: -7.5  
   - Y: -8.5  
@@ -157,7 +157,7 @@ Canvas Handler Logo Canvas Prefab: none
   - Material: cross_shader  
   - x pixel : -675  
   - y pixel : -604  
-- GameObject 'EnvironmentInitialization'. Attached component: 'Environment Configuration'.
+- **GameObject 'EnvironmentInitialization'.** Attached component: 'Environment Configuration'.
     - Params:  
 Slam Relocalization Active: uncheck  
 Surface Reconstruction Active: uncheck  
