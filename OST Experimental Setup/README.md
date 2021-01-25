@@ -38,7 +38,7 @@ The VST Experimental Setup is explained in detail in its own module, and the sam
 ```
 
 
-- GameObject 'SceneManager'. Attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
+- **GameObject 'SceneManager'.** Attached components: Network Manager, Network Manager HUD, Tiny Calibration, Spawn Targets and Spawn Targets Exp2.
     - Network Manager params:  
 don't destroy on load: checked  
 run in background: checked  
@@ -101,16 +101,16 @@ Element 0...N: represent the prefabs of the objects that will be instantiated.
 Head: Hmd_Tracker_local  
 
 
-- GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
-- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
+- **GameObject 'Hmd_Tracker_local'**. Tagged with 'HMD'. Attached component: Hmd_tracker_pose. 
+- **GameObject 'Tracker_MetaCameraRig_Transformation'.** Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
     - Approximate starting values, if using the provided mount:  
     Position: x=-0,02; y=0; z=-0,09  
     Rotation: x=56,02; y=-3; z=-4,23  
     Scale: x=1; y=1; z=1  
 
-- GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
+- **GameObject 'NeutralizeRotation'.** Attached component: Neutralize Rotation. 
 
-- GameObject 'MetaCameraRig' (default SDK prefab). 
+- **GameObject 'MetaCameraRig'.** Default SDK prefab. 
     - Params:  
 Meta manager: enabled  
 Playback Dir: none  
@@ -125,23 +125,23 @@ Enable Asyncronous Rendering: checked
 Meta Context Bridge and Webcam: Off   
 Canvas Handler Logo Canvas Prefab: none  
 
-- GameObject 'StereoCameras': Alignment User Settings disabled. 
-- GameObject 'Left_camera': tagged with 'MainCamera'
-- GameObject 'Right_camera': tagged with 'secondCamera'. 
-- GameObject 'EnvironmentInitialization'. Attached component: 'Environment Configuration'.
+- **GameObject 'StereoCameras':** Alignment User Settings disabled. 
+- **GameObject 'Left_camera':** tagged with 'MainCamera'
+- **GameObject 'Right_camera':** tagged with 'secondCamera'. 
+- **GameObject 'EnvironmentInitialization'.** Attached component: 'Environment Configuration'.
     - Params:  
 Slam Relocalization Active: uncheck  
 Surface Reconstruction Active: uncheck  
 
-- GameObject 'leftEye': empty GameObject. (leave empty)
-- GameObject 'rightEye': empty GameObject. (leave empty)
-- GameObject 'TrackerEye': empty GameObject. (leave empty)
+- **GameObject 'leftEye':** empty GameObject. (leave empty)
+- **GameObject 'rightEye':** empty GameObject. (leave empty)
+- **GameObject 'TrackerEye':** empty GameObject. (leave empty)
 
-- GameObject 'Target_Tracker_local'. Attached component: Target_tracker_pose.
+- **GameObject 'Target_Tracker_local'.** Attached component: Target_tracker_pose.
 
-- GameObject 'CheckerboardTracker'. Attached component: Checkerboard_tracker_pose. 
-- GameObject 'CheckerboardModel'. This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
-- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- **GameObject 'CheckerboardTracker'.** Attached component: Checkerboard_tracker_pose. 
+- **GameObject 'CheckerboardModel'.** This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
+- **GameObject 'TranslationInterface'.** Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Translation-Editing mode are the following ones:
     - Y: Switch to Rotation mode.  
     - W: Moves the virtual checkerboard forward in the Z axis (away from the user).   
@@ -153,7 +153,7 @@ The keybinds of the Translation-Editing mode are the following ones:
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.
-- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- **GameObject 'RotationInterface'.** Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Rotation-Editing mode are the following ones:
     - U: Switch to Translation mode.  
     - W: Increases the virtual checkerboard rotation over the X axis.  
@@ -166,7 +166,7 @@ The keybinds of the Rotation-Editing mode are the following ones:
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.  
   
-- GameObject Volume: empty GameObject. (leave empty).
+- **GameObject Volume:** empty GameObject. (leave empty).
 
 
 
