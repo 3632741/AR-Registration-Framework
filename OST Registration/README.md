@@ -1,10 +1,13 @@
 # OST Registration (tested in unity 2017.4.17f1)
  # Server Scene Setup
 ```bash 
+├───Checkerboard_Tracker
+├───EventSystem
 ├───KinectSocketReceiver
 ├───SceneController
-├───SPAAM_target
+├───SPAAM_Target_Tracker
 └───VR Head Tracking
+    └───HMD_Tracker
 ```
 - VR head tracking, vr play area disabled. child: HMD tracker, with components: Steam VR_Tracked Object (origin none) and identify Tracker ID (write the ID of the vive tracker found under manage your vive trackers of steamVR).
 - SPAAM_target: same as HMD tracker
