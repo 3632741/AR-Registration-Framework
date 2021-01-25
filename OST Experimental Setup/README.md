@@ -141,7 +141,7 @@ Surface Reconstruction Active: uncheck
 
 - GameObject 'CheckerboardTracker'. Attached component: Checkerboard_tracker_pose. 
 - GameObject 'CheckerboardModel'. This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
-- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Translation-Editing mode are the following ones:
     - Y: Switch to Rotation mode.  
     - W: Moves the virtual checkerboard forward in the Z axis (away from the user).   
@@ -153,7 +153,7 @@ The keybinds of the Translation-Editing mode are the following ones:
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.
-- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the final alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Rotation-Editing mode are the following ones:
     - U: Switch to Translation mode.  
     - W: Increases the virtual checkerboard rotation over the X axis.  
