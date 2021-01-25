@@ -110,7 +110,61 @@ Skip calibration: toggle to skip calibration.
 Second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.  
 Meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).  
 Checker Board: Add the 'Checkerboard_tracker' GameObject from the scene hierarchy.  
-- **GameObject 'Hmd_tracker_local'.** same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
+- GameObject 'Hmd_Tracker_local' (tagged HMD). Attached component: Hmd_tracker_pose. 
+- GameObject 'Tracker_MetaCameraRig_Transformation'. Tagged with 'TrackerMetaCameraTransform'. The transform values used for this GameObject are obtained from several SPAAM calibrations. 
+    - Approximate starting values, if using the provided mount:  
+    Position: x=-0,02; y=0; z=-0,09  
+    Rotation: x=56,02; y=-3; z=-4,23  
+    Scale: x=1; y=1; z=1  
+
+- GameObject 'NeutralizeRotation'. Attached component: Neutralize Rotation. 
+
+- GameObject 'MetaCameraRig' (default SDK prefab). 
+    - Params:  
+Meta manager: enabled  
+Playback Dir: none  
+Context Bridge: MetaCameraRig(MetaContextBridge)  
+Slam Localizer: enabled, with Loading Map Wait Time 10   
+Show Calibration UI: enabled  
+Rotation Only Tracking: enabled  
+Meta Compositor Script: enabled with Enable WebCam unchecked  
+Enable Depth Occlusion: unchecked  
+Enable 2D Warp: checked  
+Enable Asyncronous Rendering: checked  
+Meta Context Bridge and Webcam: Off   
+Canvas Handler Logo Canvas Prefab: none  
+
+- GameObject 'StereoCameras': Alignment User Settings disabled. 
+- GameObject 'Left_camera': tagged with 'MainCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**  
+  Params:  
+  - X: -7.5  
+  - Y: -8.5  
+  - X scale: 1  
+  - Y scale: 1  
+  - xres= 16  
+  - yres= 9  
+  - Material: cross_shader  
+  - x pixel : -675  
+  - y pixel : -604  
+- GameObject 'Right_camera': tagged with 'secondCamera'. **IF USING THE SPAAM SCRIPT ON THE SCENECONTROLLER, Attach the component: 'smooth'.**
+  Params:  
+  - X: -7.5  
+  - Y: -8.5  
+  - X scale: 1  
+  - Y scale: 1  
+  - xres= 16  
+  - yres= 9  
+  - Material: cross_shader  
+  - x pixel : -675  
+  - y pixel : -604  
+- GameObject 'EnvironmentInitialization'. Attached component: 'Environment Configuration'.
+    - Params:  
+Slam Relocalization Active: uncheck  
+Surface Reconstruction Active: uncheck  
+
+- GameObject 'leftEye': empty GameObject. (leave empty)
+- GameObject 'rightEye': empty GameObject. (leave empty)
+- GameObject 'TrackerEye': empty GameObject. (leave empty)
 - **GameObject 'Target_Tracker_local'.**  Attached component: Target_tracker_pose.
 - **GameObject 'CalibrationParameters'.** attached component SavedParameters, leave unitialized
 - **GameObject 'CheckerboardTracker'.** Attached component: Checkerboard_tracker_pose. 
