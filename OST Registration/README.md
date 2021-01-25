@@ -79,21 +79,25 @@ Registered Spawnable Prefab: Synced_Data
 Show Runtime GUI: checked  
 GUI Horizontal Offset: 0  
 GUI Vertical Offset: 0  
-  - SPAAM params: 
-        RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error 0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked.  
-        Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates.  
-         Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)  
-         Rendering Resolution: add the resolution and projected pixel size of the HMD. For the Meta2, Resolution Width = 1280, Resolution Height = 1440, Pixel Size X = 4,84375e-05, Pixel Size Y = 5,9375e-05  
-         Crosshair positions during calibration: define the x and y screen positions where the crosshair will be displayed.  
-         Alignment requested for SPAAM: number must be equal to the size of the specified crosshair position vector. suggested value = 15 to be used with RANSAC.  
-         Crosshair size: size of the sprite used to display the crosshair. our sprite was 64x64px wide.  
-         object tracked by vive tracker: target_tracker_local  
-         HMD camera: HMD_tracker_local  
-         original projection: leave empty, these field are display only.  
-         Camera - Image plane reference frame alignment: check accordingly depending on your planes orientation.  
-         Pixel Coordinates Transformations: metric conversion for the meta2.  
-         remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.  
-         use pixel dimensions during computations: leave unchecked unless needed.  
+  - SPAAM params:   
+    Inlier Distance threshold: 0,0001 (suggested).  
+    Ransac Points per Batch: 6.  
+    Max Error: 0,001 suggested.  
+    Toggle to apply intrinsic parameters: leave unchecked.  
+    Toggle to use Custom input parameters (debugging): can be used to ignore the data acquired from the sensors, and run the SPAAM algorythm on a set of user defined coordinates instead.  
+    Adjustment Shift: 0,003 (suggested).  
+    Adjustment Angle: 10 (suggested).    
+    Rendering Resolution: add the resolution and projected pixel size of the HMD. For the Meta2, Resolution Width = 1280, Resolution Height = 1440, Pixel Size X = 4,84375e-05, Pixel Size Y = 5,9375e-05.
+    Crosshair positions during calibration: define the x and y screen positions where the crosshair will be displayed.    
+    Alignment requested for SPAAM: number must be equal to the size of the specified crosshair position vector. suggested value = 15 to be used with RANSAC.    
+    Crosshair size: size of the sprite used to display the crosshair. our sprite was 64x64px wide.   
+    Object tracked by vive tracker: Add the GameObject 'target_tracker' from the scene hierarchy.    
+    HMD camera: Add the GameObject 'HMD_tracker' from the scene hierarchy.    
+    Original projection: leave empty, these field are display only.    
+    Camera - Image plane reference frame alignment: check accordingly depending on your planes orientation.   
+    Pixel Coordinates Transformations: metric conversion for the meta2.   
+    Remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.   
+    Use pixel dimensions during computations: leave unchecked unless needed.    
   - Enable Calibration params:  
     toggle after initialization.   
     Left and right Camera needs to be paired with the left camera of the metacamera rig.  
@@ -102,9 +106,9 @@ GUI Vertical Offset: 0
 Adjustment Shift: 0,008 (suggested)  
 Adjustment Angle: 10 (suggested)  
 Focal Step: 5 (suggested)  
-skip calibration: toggle to skip calibration.  
-second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.  
-meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).  
+Skip calibration: toggle to skip calibration.  
+Second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.  
+Meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).  
 Checker Board: Add the 'Checkerboard_tracker' GameObject from the scene hierarchy.  
 - **GameObject 'Hmd_tracker_local'.** same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
 - **GameObject 'Target_Tracker_local'.**  Attached component: Target_tracker_pose.
