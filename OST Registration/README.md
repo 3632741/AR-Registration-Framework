@@ -54,28 +54,54 @@
 └───Target_Tracker
 ```
 SPAAM scene setup:
-1 - SceneManager with following attachments:
-    - network manager, network manager HUD same as exp scene.
-    - SPAAM: 
-        #RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error          0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked. 
-        #Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates. 
-        # Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)
-        # Rendering Resolution: add the resolution and projected pixel size of the HMD. For the Meta2, Resolution Width = 1280, Resolution Height = 1440, Pixel Size X = 4,84375e-05, Pixel Size Y = 5,9375e-05
-        # Crosshair positions during calibration: define the x and y screen positions where the crosshair will            be displayed.
-        # Alignment requested for SPAAM: number must be equal to the size of the specified crosshair position vector. suggested value = 15 to be used with RANSAC.
-        # Crosshair size: size of the sprite used to display the crosshair. our sprite was 64x64px wide.
-        # object tracked by vive tracker: target_tracker_local
-        # HMD camera: HMD_tracker_local
-        # original projection: leave empty, these field are display only.
-        # Camera - Image plane reference frame alignment: check accordingly depending on your planes orientation.
-        # Pixel Coordinates Transformations: metric conversion for the meta2.
-        # remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.
-        # use pixel dimensions during computations: leave unchecked unless needed.
-    - Enable Calibration: toggle after initialization. Left and right Camera needs to be paired with the left camera of the metacamera rig. Calibration Parameters must be paired with the CalibrationParameters gameobject.
-2 - Hmd_tracker_local. same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
-3 - Target_Tracker_local : same as exp 2
-4 - CalibrationParameters : attached component SavedParameters, leave unitialized
-5 - Checkerboard_local : same as exp 2
+- GameObject 'SceneManager'. Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM', 'Enable Calibration'.
+  Parameters:  
+- Network Manager params:  
+don't destroy on load: checked  
+run in background: checked  
+log level: info  
+offline scene: none  
+online scene: none  
+network address: localhost  
+network port: 7777  
+max delay: 0,01  
+max buffered packets: 16  
+packet fragmentation: checked  
+MatchMaker Host URI: mm.unet.unity3d.com  
+MatchMaker Port: 443  
+Match Name: default  
+Maximum Match Size: 4  
+Spawn Info  
+Player prefab: none  
+Registered Spawnable Prefab: Synced_Data  
+
+    - Network Manager HUD params:  
+Show Runtime GUI: checked  
+GUI Horizontal Offset: 0  
+GUI Vertical Offset: 0  
+    - SPAAM params: 
+        RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error 0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked.  
+        Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates.  
+         Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)  
+         Rendering Resolution: add the resolution and projected pixel size of the HMD. For the Meta2, Resolution Width = 1280, Resolution Height = 1440, Pixel Size X = 4,84375e-05, Pixel Size Y = 5,9375e-05  
+         Crosshair positions during calibration: define the x and y screen positions where the crosshair will be displayed.  
+         Alignment requested for SPAAM: number must be equal to the size of the specified crosshair position vector. suggested value = 15 to be used with RANSAC.  
+         Crosshair size: size of the sprite used to display the crosshair. our sprite was 64x64px wide.  
+         object tracked by vive tracker: target_tracker_local  
+         HMD camera: HMD_tracker_local  
+         original projection: leave empty, these field are display only.  
+         Camera - Image plane reference frame alignment: check accordingly depending on your planes orientation.  
+         Pixel Coordinates Transformations: metric conversion for the meta2.  
+         remove crosshair sprite size shift: leave unchecked unless the center of the crosshair is shifted with respect to the center of the sprite.  
+         use pixel dimensions during computations: leave unchecked unless needed.  
+    - Enable Calibration params:  
+    toggle after initialization.   
+    Left and right Camera needs to be paired with the left camera of the metacamera rig.  
+    Calibration Parameters must be paired with the CalibrationParameters gameobject.  
+- GameObject 'Hmd_tracker_local'. same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
+- GameObject 'Target_Tracker_local'. same as exp 2
+- GameObject 'CalibrationParameters'. attached component SavedParameters, leave unitialized
+- GameObject 'Checkerboard_local'. same as exp 2
 
 
 Final alignment performed by adding the tiny Calibration script to a gameobject.
