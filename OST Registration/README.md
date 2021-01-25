@@ -18,7 +18,23 @@
 │   ├───CheckerboardModel
 │   ├───RotationInterface
 │   └───TranslationInterface
-├───HMD_tracker
+├───HMD_Tracker
+│   ├───leftEye
+│   ├───rightEye
+│   ├───TrackerEye
+│   └───Tracker_Metacamerarig_Transformation
+│       └───NeutralizeRotation
+│           └───MetaCameraRig
+│               ├───EnvironmentInitialization
+│               ├───InteractionEngineSettings
+│               └───MetaCameras
+│                   ├───AudioListener
+│                   ├───StereoCameras
+│                   │   ├───EventCamera
+│                   │   ├───LeftCamera
+│                   │   └───RightCamera
+│                   └───VirtualWebcam
+│                       └───ContentCamera
 ├───SceneController
 └───Target_Tracker
 ```
