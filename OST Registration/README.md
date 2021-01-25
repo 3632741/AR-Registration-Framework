@@ -9,23 +9,23 @@
 └───VR Head Tracking
     └───HMD_Tracker
 ```
-- GameObject 'VR head tracking'.  
+- **GameObject 'VR head tracking'.**  
   Settings: 
   - VR play area: disabled.   
-- GameObject 'HMD_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.  
+- **GameObject 'HMD_Tracker'.** Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.  
    Settings:  
    - Tracker ID: write the ID of the vive tracker found under manage your vive trackers of steamVR.  
-- GameObject 'SPAAM_Target_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.   
+- **GameObject 'SPAAM_Target_Tracker'.** Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.   
    Settings:   
    - Tracker ID: write the ID of the vive tracker found under manage your vive trackers of steamVR.  
-- GameObject 'Checkerboard_Tracker'. Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.   
+- **GameObject 'Checkerboard_Tracker'.** Attached components: Steam VR_Tracked Object (origin none) and identify Tracker ID.   
    Settings:  
    - Tracker ID: write the ID of the vive tracker found under manage your vive trackers of steamVR.  
-- GameObject 'KinectSocketReceiver'. Attached components: SyncKinect and Socket Receiver.  
+- **GameObject 'KinectSocketReceiver'.** Attached components: SyncKinect and Socket Receiver.  
    Settings:   
    - Port: Add the port used for the Kinect data transmission (default on port 8888).
    - X,Y,Z Kinect Tracked: leave empty, will be used to display the current tracked position.
-- GameObject 'SceneController'. Attached components: network manager and network manager hud (same parameters as the client). NB synced data must be the same in both projects.
+- **GameObject 'SceneController'.** Attached components: network manager and network manager hud (same parameters as the client). NB synced data must be the same in both projects.
 # Client Scene Setup
 ```bash 
 ├───CalibrationParameters
