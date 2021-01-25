@@ -56,7 +56,7 @@
 SPAAM scene setup:
 - GameObject 'SceneManager'. Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM', 'Enable Calibration'.
   Parameters:  
-- Network Manager params:  
+  - Network Manager params:  
 don't destroy on load: checked  
 run in background: checked  
 log level: info  
@@ -75,11 +75,11 @@ Spawn Info
 Player prefab: none  
 Registered Spawnable Prefab: Synced_Data  
 
-    - Network Manager HUD params:  
+     - Network Manager HUD params:  
 Show Runtime GUI: checked  
 GUI Horizontal Offset: 0  
 GUI Vertical Offset: 0  
-    - SPAAM params: 
+      - SPAAM params: 
         RANSAC settings: Inlier Distance threshold = 0,0001 (suggested). Ransac Points per Batch = 6. Max Error 0,001 suggested. Toggle to apply intrinsic parameters: leave unchecked.  
         Toggle to use Custom input parameters (debugging) can be used to ignore the data acquired from the     sensors and instead run the SPAAM algorythm on a set of user defined coordinates.  
          Scale Factor and Rotation adjustment Shift = 0,003 (suggested) Adjustment Angle = 10 (suggested)  
