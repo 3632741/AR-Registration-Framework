@@ -99,13 +99,13 @@ GUI Vertical Offset: 0
     Left and right Camera needs to be paired with the left camera of the metacamera rig.  
     Calibration Parameters must be paired with the CalibrationParameters gameobject. 
   - Tiny Calibration params:
-Adjustment Shift: 0,008 (suggested)
-Adjustment Angle: 10 (suggested)
-Focal Step: 5 (suggested)
-skip calibration: toggle to skip calibration.
-second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.
-meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).
-Checker Board: Checkerboard_local
+Adjustment Shift: 0,008 (suggested)  
+Adjustment Angle: 10 (suggested)  
+Focal Step: 5 (suggested)  
+skip calibration: toggle to skip calibration.  
+second experiment: toggle to do the active alignment task, leave unchecked for the blind reaching.  
+meta sdk experiment: toggle to use the Meta origin as the center of the world reference frame (experimental).  
+Checker Board: Add the 'Checkerboard_tracker' GameObject from the scene hierarchy.  
 - **GameObject 'Hmd_tracker_local'.** same settings for all the children but add the smooth script to left and right camera, with the following parameters: x =-7.5, Y=-8.5, X scale=1, Y scale=1, xres=16, yres=9, Material=cross_shader, x pixel = -675, y pixel = -604
 - **GameObject 'Target_Tracker_local'.**  Attached component: Target_tracker_pose.
 - **GameObject 'CalibrationParameters'.** attached component SavedParameters, leave unitialized
@@ -137,7 +137,7 @@ The keybinds of the Rotation-Editing mode are the following ones:
     - Space: Saves the current parameters and continues to the experiment.  
 
 
-Final alignment performed by adding the tiny Calibration script to a gameobject.
+
 
 
     
