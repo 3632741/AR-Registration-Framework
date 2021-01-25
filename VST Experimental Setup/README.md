@@ -28,12 +28,12 @@ The OST Experimental Setup is explained in detail in its own module, and the sam
         └───Right_eye
             └───Frame
 ```       
-- GameObject 'directional light'. (Default Unity Scene directional light).
-- GameObject 'GameController'. Attached components: TinyCalibration, spawn targets, spawn targets exp 2. Scale factor and rotation correction for tiny calibration same as in the OST. toggle to skip calibration can be used if the session is interrupted but the hmd is not removed to avoid reperforming the alignment task. toggle second experiment before starting the project to execute the interaction task. add the checkerboard gameobject to the Checker Board public variable.
-- Zed_Rig_Stereo: default ZED camera prefab (tested with SDK 2.8.0). Left_eye is tagged MainCamera, Right_eye is tagged secondCamera.
-- GameObject 'CheckerboardTracker'. Attached component: Checkerboard_tracker_pose. 
-- GameObject 'CheckerboardModel'. This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
-- GameObject 'TranslationInterface'. Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- **GameObject 'directional light'.** (Default Unity Scene directional light).
+- **GameObject 'GameController'.** Attached components: TinyCalibration, spawn targets, spawn targets exp 2. Scale factor and rotation correction for tiny calibration same as in the OST. toggle to skip calibration can be used if the session is interrupted but the hmd is not removed to avoid reperforming the alignment task. toggle second experiment before starting the project to execute the interaction task. add the checkerboard gameobject to the Checker Board public variable.
+- **GameObject 'Zed_Rig_Stereo':** default ZED camera prefab (tested with SDK 2.8.0). Left_eye is tagged MainCamera, Right_eye is tagged secondCamera.
+- **GameObject 'CheckerboardTracker'.** Attached component: Checkerboard_tracker_pose. 
+- **GameObject 'CheckerboardModel'.** This is the checkerboard prefab resized and translated in the same position w.r.t. the Vive Tracker. 
+- **GameObject 'TranslationInterface'.** Tagged with 'TranslationInterface'. This is the prefab of the translation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Translation-Editing mode are the following ones:
     - Y: Switch to Rotation mode.  
     - W: Moves the virtual checkerboard forward in the Z axis (away from the user).   
@@ -45,7 +45,7 @@ The keybinds of the Translation-Editing mode are the following ones:
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.
-- GameObject 'RotationInterface'. Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
+- **GameObject 'RotationInterface'.** Tagged with 'RotationInterface'. This is the prefab of the rotation gizmo used during the alignment phase. The experimenter, before the experiment, needs to adjust the hologram of the checkerboard until it overlaps with the real one, which is tracked by a Vive Tracker. When the scene starts, the scene will be in Translation-Editing mode. 
 The keybinds of the Rotation-Editing mode are the following ones:
     - U: Switch to Translation mode.  
     - W: Increases the virtual checkerboard rotation over the X axis.  
@@ -57,7 +57,7 @@ The keybinds of the Rotation-Editing mode are the following ones:
     - X: Increases the adjustment step (each keypress results in a bigger translation/rotation).  
     - Z: Decreases the adjustment step (each keypress results in a smaller translation/rotation).  
     - Space: Saves the current parameters and continues to the experiment.  
-- GameObject 'Volume': empty GameObject. (leave empty).
-- GameObject 'KinectTracker'. Tagged with 'kinectTracker'. Attached components: 'IdentifyTrackerID and 'steamVR_Tracked_Object', origin: none. 
-- GameObject 'Kinect'. The transform of this GameObject is obtained by the procedure described in the module "Kinect Registration" (T s->k).
-- GameObject 'kinectTrackedObject'. Tagged with 'kinect'. The transform of this GameObject is updated with the 3D position of the user's finger in the Kinect reference frame.
+- **GameObject 'Volume':** empty GameObject. (leave empty).
+- **GameObject 'KinectTracker'.** Tagged with 'kinectTracker'. Attached components: 'IdentifyTrackerID and 'steamVR_Tracked_Object', origin: none. 
+- **GameObject 'Kinect'.** The transform of this GameObject is obtained by the procedure described in the module "Kinect Registration" (T s->k).
+- **GameObject 'kinectTrackedObject'.** Tagged with 'kinect'. The transform of this GameObject is updated with the 3D position of the user's finger in the Kinect reference frame.
