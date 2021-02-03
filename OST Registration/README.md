@@ -54,7 +54,7 @@
 └───Target_Tracker
 ```
 
-- **GameObject 'SceneManager'.** Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM' **OR** 'tiny Calibration', 'Enable Calibration'. **If using the 'SPAAM' calibration, the Mathnet library is required.**  
+- **GameObject 'SceneManager'.** Attached Components: 'Network Manager', 'Network Manager HUD', 'SPAAM' **OR** 'tiny Calibration', 'Enable Calibration'. **If using the 'SPAAM' calibration, the Mathnet library is required. Simply unpack the Plugins archive inside the Assets folder.**  
   Parameters:  
   - Network Manager params:  
 don't destroy on load: checked  
