@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Globalization;
-public class tinyCalibration : MonoBehaviour
+public class tinyCalibrationVive : MonoBehaviour
 {
     [Header("Scale factor and rotation correction")]
     public float adjustmentShift = 0;
