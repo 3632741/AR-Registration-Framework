@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 
-public class spawnTargetsExp2 : MonoBehaviour {
+public class spawnTargetsExp2Vive : MonoBehaviour {
 
 	[Header("Experimental settings")]
 	public int numeroAcquisizioni = 0;
