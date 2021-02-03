@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class SpawnTargets : MonoBehaviour {
+public class SpawnTargetsVive : MonoBehaviour {
 
     [Header("Experimental settings")]
     public int numeroAcquisizioni = 0;
