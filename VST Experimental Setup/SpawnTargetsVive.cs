@@ -6,7 +6,7 @@ using System.IO;
 public class SpawnTargetsVive : MonoBehaviour {
 
     [Header("Experimental settings")]
-    public int numeroAcquisizioni = 0;
+    public int trialsNumber = 0;
     private int datiAcquisiti = 0;
     public string logDataFilename="data";
 
@@ -148,7 +148,7 @@ public class SpawnTargetsVive : MonoBehaviour {
 			}
 
 		} else {
-			if (Input.GetKeyDown ("space") && datiAcquisiti < numeroAcquisizioni) {
+			if (Input.GetKeyDown ("space") && datiAcquisiti < trialsNumber) {
 				spawn ();
 			} else if (Input.GetKeyDown ("space")) {
 				Debug.Log ("Fine acquisizione dati");
