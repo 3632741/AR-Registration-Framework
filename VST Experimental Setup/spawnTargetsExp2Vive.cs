@@ -7,7 +7,7 @@ using System.Linq;
 public class spawnTargetsExp2Vive : MonoBehaviour {
 
 	[Header("Experimental settings")]
-	public int numeroAcquisizioni = 0;
+	public int trialsNumber = 0;
 	private int datiAcquisiti = 0;
 	public string logDataFilename="data";
 
@@ -32,7 +32,7 @@ public class spawnTargetsExp2Vive : MonoBehaviour {
 	void Start () {
 
 
-		for (int i = 0; i < numeroAcquisizioni; i++) {
+		for (int i = 0; i < trialsNumber; i++) {
 			List<int> singleSequence = GenerateRandom(9,0,9);
 			for (int k = 0; k < singleSequence.Count; k++) {
 				spawnSequence.Add (singleSequence[k]);			
