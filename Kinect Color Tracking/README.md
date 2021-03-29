@@ -2,7 +2,7 @@
 
 This module can be used to track the user's finger using a colored fingercap, using a simple color filtering. It can be used to track objects of any size as long as they are of a particular color, but the system will always output a single 3D position corresponding to the centroid of the area segmented with the color filter.
 
-![alt text](https://github.com/3632741/AR-Registration-Framework-PhD-Thesis/blob/main/Kinect%20Color%20Tracking/colorSegmentation.jpg)
+![alt text](https://github.com/3632741/AR-Registration-Framework/blob/main/Kinect%20Color%20Tracking/colorSegmentation.jpg)
 
 This project has been made by editing one of the code samples (CoordinateMappingBasics-D2D) of the Kinect for Windows SDK 2.0. Refer to the official Microsoft SDK instructions to download the required drivers (https://www.microsoft.com/en-us/download/details.aspx?id=44561).
 
