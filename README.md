@@ -1,5 +1,6 @@
 # AR Registration Framework
 Authors: Giorgio Ballestin, Manuela Chessa, Fabio Solari.
+
 Dept. of Informatics, Bioengineering, Robotics, and Systems Engineering, University of Genoa, Italy
 Corresponding author: Giorgio Ballestin (e-mail: giorgio.ballestin@dibris.unige.it)
 
