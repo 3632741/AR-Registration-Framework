@@ -2,6 +2,7 @@
 Authors: Giorgio Ballestin, Manuela Chessa, Fabio Solari.
 
 Dept. of Informatics, Bioengineering, Robotics, and Systems Engineering, University of Genoa, Italy
+
 Corresponding author: Giorgio Ballestin (e-mail: giorgio.ballestin@dibris.unige.it)
 
 Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
