@@ -9,7 +9,7 @@ Scripts and tools to register different devices in the same reference frame. All
 
 ![alt text](https://github.com/3632741/AR-Registration-Framework/blob/main/FrameworkScheme.PNG)
 
-The framework is composed by several modules:
+The framework is composed of several modules:
 - Kinect Color Tracking: this module uses a Kinect V2 to threshold the RGB-D data around specified HSV/RGB values, and is used to track the user's finger. The image is filtered with a morphological erosion filter to   remove noise and a morphological dilation filter to fill small gaps. The coordinates of the centroid of the thresholded blob are sent with a socket into Unity.
 
 - Kinect Registration: The Kinect is registered inside the HTC Vive reference system by using stereo camera calibration, with a Vive Tracker and a ZED mini stereo camera mounted on a perforated corner metal profile. The 3D printable files for this setup are given. A similar approach can be used with any camera as long as it can be fixed in a known position with respect to the Vive Tracker, which must be rigidly attached to the Kinect.
