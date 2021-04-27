@@ -14,6 +14,7 @@ The work presented in this repository has been accepted for publication on IEEE 
 This repository is licensed under "**The Unlicense**", a license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.
 
 **Registration Framework Scheme**
+
 ![alt text](https://github.com/3632741/AR-Registration-Framework/blob/main/FrameworkScheme.png)
 
 The framework is composed of several modules:
