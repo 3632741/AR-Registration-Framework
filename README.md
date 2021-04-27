@@ -7,6 +7,10 @@ Corresponding author: Giorgio Ballestin (e-mail: giorgio.ballestin@dibris.unige.
 
 Scripts and tools to register different devices in the same reference frame. All the devices will be registered in the HTC Vive reference frame. The same techniques and methods can be applied to any OST/VST HMD with similar characteristics.
 
+The work presented in this repository has been accepted for publication on IEEE Access (to appear).
+
+This repository is licensed under "**The Unlicense**", a license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.
+
 ![alt text](https://github.com/3632741/AR-Registration-Framework/blob/main/FrameworkScheme.png)
 
 The framework is composed of several modules:
