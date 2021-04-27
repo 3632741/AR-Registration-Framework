@@ -9,11 +9,11 @@ Scripts and tools to register different devices in the same reference frame. All
 
 The work presented in this repository has been accepted for publication on IEEE Access (to appear).
 
-**License**
+**License:**
 
-This repository is licensed under "**The Unlicense**", a license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.
+This repository is licensed under "**The Unlicense**", a license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code. Refer to the license file for further details.
 
-**Registration Framework Scheme**
+**Registration Framework Scheme:**
 
 ![alt text](https://github.com/3632741/AR-Registration-Framework/blob/main/FrameworkScheme.png)
 
